@@ -1,58 +1,62 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
+# configuration.nix
+{ config, pkgs, lib, home-manager, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./pkgs.nix
-      ./gnome.nix
-      ./firewall.nix
-      ./services.nix  # This line now loads all your service settings
-    ];
+  # Keep ALL imports centralized here
+  imports = [
+    ./hardware-configuration.nix
+    ./pkgs.nix
+    ./gnome.nix
+    ./firewall.nix
+    ./services.nix
 
-  # Bootloader.
+    # Home Manager module provided by the flake (via specialArgs)
+    home-manager.nixosModules.home-manager
+  ];
+
+  # Enable flakes + new CLI (safe to leave even if already set)
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  # (Optional but useful for GNOME dconf tweaks via Home Manager)
+  programs.dconf.enable = true;
+
+  # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Networking options
-  networking.hostName = "nixos"; # Define your hostname.
+  # Networking
+  networking.hostName = "nixos";
   networking.networkmanager.enable = true;
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  # Set your time zone.
+  # Locale & time
   time.timeZone = "America/Mexico_City";
-
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # User
   users.users.jesseinmx = {
     isNormalUser = true;
     description = "Jesse";
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
-  # Install firefox.
+  # Home Manager config (uses the same pkgs and user packages)
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    users.jesseinmx = import ./home.nix;
+  };
+
+  # Apps
   programs.firefox.enable = true;
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  # Input (natural scrolling)
+  services.libinput = {
+    enable = true;
+    touchpad.naturalScrolling = true;
+    mouse.naturalScrolling = true;
+  };
 
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "25.05"; # Did you read the comment?
-
+  # State version
+  system.stateVersion = "25.05";
 }
+

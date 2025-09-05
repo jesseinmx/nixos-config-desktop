@@ -1,0 +1,34 @@
+# Nix build artifacts
+result
+result-*
+
+# Local dirs from nix build/test
+.nix-*
+*.drv.chroot
+
+# Logs & caches
+*.log
+.cache/
+.direnv/
+
+# Editor/IDE stuff
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Lockfiles (decide if you want to commit them!)
+# nix flake update generates this
+# Comment out if you want to track it
+flake.lock
+
+# Secrets (if you store them in this repo)
+secrets.yaml
+*.age
+*.key
+
+# Misc
+.DS_Store
+Thumbs.db
+
