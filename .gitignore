@@ -18,10 +18,6 @@ result-*
 .idea/
 .vscode/
 
-# Lockfiles (decide if you want to commit them!)
-# nix flake update generates this
-# Comment out if you want to track it
-flake.lock
 
 # Secrets (if you store them in this repo)
 secrets.yaml

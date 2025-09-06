@@ -1,0 +1,21 @@
+# Enforce LF line endings for cross-platform consistency
+* text=auto eol=lf
+
+# Nix files → treat as text
+*.nix text
+
+# Common config/data files → always text
+*.json text
+*.yaml text
+*.yml  text
+*.toml text
+*.md   text
+*.sh   text
+
+# Secrets → never normalize line endings (avoid corruption)
+*.age binary
+*.key binary
+
+# GitHub Linguist hints (improves language stats)
+*.nix linguist-language=Nix
+
