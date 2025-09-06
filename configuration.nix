@@ -6,6 +6,8 @@
   imports = [
     ./hardware-configuration.nix
     ./pkgs.nix
+    ./virtualbox.nix
+    #./vagrant.nix
     ./gnome.nix
     ./firewall.nix
     ./services.nix

@@ -22,6 +22,7 @@
     chezmoi
     chromium
     codex
+    copyq
     cifs-utils
     age
     curl
@@ -44,6 +45,7 @@
     nerd-fonts.hack
     nmap
     obs-studio
+    packer
     pavucontrol
     pipewire
     psmisc
