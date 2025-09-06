@@ -1,5 +1,5 @@
 {
-  description = "nixos-config-desktop (minimal flake, all imports live in configuration.nix)";
+  description = "nixos-config-desktop (flake with Home Manager)";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
@@ -12,12 +12,24 @@
     system = "x86_64-linux";
   in {
     nixosConfigurations = {
-      # Name this whatever you want to target with --flake .#<name>
       nixos = nixpkgs.lib.nixosSystem {
         inherit system;
-        # Pass flake inputs into your modules so configuration.nix can use them.
-        specialArgs = { inherit home-manager; };
-        modules = [ ./configuration.nix ];
+
+        modules = [
+          # Your system config (must NOT reference `home-manager`)
+          ./configuration.nix
+
+          # Import Home Manager as a NixOS module HERE (and only here)
+          home-manager.nixosModules.home-manager
+
+          # Minimal HM integration + point to your home.nix
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+
+            home-manager.users.jesseinmx = import ./home.nix;
+          }
+        ];
       };
     };
   };

@@ -1,5 +1,5 @@
 # configuration.nix
-{ config, pkgs, lib, home-manager, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   # Keep ALL imports centralized here
@@ -9,9 +9,6 @@
     ./gnome.nix
     ./firewall.nix
     ./services.nix
-
-    # Home Manager module provided by the flake (via specialArgs)
-    home-manager.nixosModules.home-manager
   ];
 
   # Enable flakes + new CLI (safe to leave even if already set)
@@ -39,12 +36,12 @@
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
-  # Home Manager config (uses the same pkgs and user packages)
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    users.jesseinmx = import ./home.nix;
-  };
+  # # Home Manager config (uses the same pkgs and user packages)
+  # home-manager = {
+  #   useGlobalPkgs = true;
+  #   useUserPackages = true;
+  #   users.jesseinmx = import ./home.nix;
+  # };
 
   # Apps
   programs.firefox.enable = true;
