@@ -56,6 +56,7 @@
     tmux
     tree
     v4l-utils
+    vagrant
     vim
     wakatime
     wget
@@ -80,7 +81,9 @@
 
   services.netbird.enable = true;
 
-  # services.flatpak.enable = true;
+  virtualisation.docker.enable = true;
+
+  services.flatpak.enable = true;
 
   services.printing = {
     enable = true;

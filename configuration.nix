@@ -7,7 +7,7 @@
     ./hardware-configuration.nix
     ./pkgs.nix
     ./virtualbox.nix
-    #./vagrant.nix
+    # ./vagrant.nix
     ./gnome.nix
     ./firewall.nix
     ./services.nix
@@ -35,7 +35,7 @@
   users.users.jesseinmx = {
     isNormalUser = true;
     description = "Jesse";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
   };
 
   # # Home Manager config (uses the same pkgs and user packages)

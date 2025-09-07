@@ -22,16 +22,19 @@
           # Import Home Manager as a NixOS module HERE (and only here)
           home-manager.nixosModules.home-manager
 
-          # Minimal HM integration + point to your home.nix
+          # Correctly import your home.nix for the user 'jesseinmx'
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+	    home-manager.backupFileExtension = "backup";
 
-            home-manager.users.jesseinmx = import ./home.nix;
+
+            home-manager.users.jesseinmx = {
+              imports = [ ./home.nix ];
+            };
           }
         ];
       };
     };
   };
 }
-
