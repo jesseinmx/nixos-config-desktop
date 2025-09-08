@@ -31,17 +31,5 @@
     # GNOME extensions
     gnomeExtensions.appindicator
 
-];
-
-    # Add GPaste to GNOME startup applications
-    environment.etc."xdg/autostart/gpaste-daemon.desktop".text = ''
-      [Desktop Entry]
-      Type=Application
-      Name=GPaste
-      Comment=GNOME clipboard manager
-      Exec=gpaste-daemon
-      Terminal=false
-      X-GNOME-Autostart-enabled=true
-    '';
-
+  ];
 }

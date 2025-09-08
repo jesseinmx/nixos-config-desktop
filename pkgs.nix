@@ -35,9 +35,10 @@
     gnumeric
     go
     google-chrome
-    gpaste
     htop
     insync
+    kdePackages.kdenlive
+    kitty
     lazygit
     netbird
     neovim
@@ -50,6 +51,7 @@
     pipewire
     psmisc
     qutebrowser
+    remmina
     ripgrep
     shotcut
     sops
