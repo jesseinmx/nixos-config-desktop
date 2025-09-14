@@ -14,15 +14,22 @@
     gnome-tweaks
  
     # Cursor themes for GNOME/Wayland
-    adwaita-icon-theme
+    # adwaita-icon-theme
+    # afterglow-cursors-recolored
+    # bibata-cursors
+    # bibata-cursors-translucent # broken symlink
+    xcursor-pro
+    # whitesur-cursors
+    # xorg.xcursorthemes
+
+    # Gnome Settings
     gnome-themes-extra
     gnome-settings-daemon
     gnome-shell
     gnome-control-center
  
     # Additional cursor support
-    xorg.xcursorthemes
-    hicolor-icon-theme
+    # hicolor-icon-theme
  
     # Wayland-specific cursor packages
     libsForQt5.breeze-qt5
