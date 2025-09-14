@@ -14,41 +14,49 @@
   # General system packages
   environment.systemPackages = with pkgs; [
     
+    age
     aider-chat-with-browser
     alacritty
     appimage-run
+    arp-scan
+    awscli
     bat
     bitwarden
     chezmoi
     chromium
+    cifs-utils
     codex
     copyq
-    cifs-utils
-    age
     curl
     docker
     eza
+    ffmpeg-full
     firefox
     gemini-cli
+    ghostty
     git
     git-open
     gnumeric
     go
     google-chrome
+    granted
     htop
     insync
     kdePackages.kdenlive
     kitty
+    kubectl
     lazygit
-    netbird
     neovim
     nerd-fonts.droid-sans-mono
     nerd-fonts.hack
+    netbird
     nmap
+    nodePackages.aws-cdk
     obs-studio
     packer
     pavucontrol
     pipewire
+    podman
     psmisc
     qutebrowser
     remmina
@@ -59,6 +67,7 @@
     tree
     v4l-utils
     vagrant
+    vault
     vim
     wakatime
     wget
@@ -66,6 +75,7 @@
     wl-clipboard
     xdg-desktop-portal-gtk
     xdg-utils
+    yq
     zoxide
 
   ];
