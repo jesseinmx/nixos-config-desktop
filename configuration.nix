@@ -38,12 +38,12 @@
     extraGroups = [ "networkmanager" "wheel" "docker" ];
   };
 
-  # # Home Manager config (uses the same pkgs and user packages)
-  # home-manager = {
-  #   useGlobalPkgs = true;
-  #   useUserPackages = true;
-  #   users.jesseinmx = import ./home.nix;
-  # };
+  # Home Manager config (uses the same pkgs and user packages)
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    users.jesseinmx = import ./home.nix;
+  };
 
   # Apps
   programs.firefox.enable = true;

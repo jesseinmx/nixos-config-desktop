@@ -71,6 +71,7 @@
     vagrant
     vault
     vim
+    vscode-fhs
     wakatime
     wget
     wireplumber
