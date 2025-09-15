@@ -28,6 +28,7 @@
     codex
     copyq
     curl
+    dig
     docker
     eza
     ffmpeg-full
@@ -59,6 +60,7 @@
     podman
     psmisc
     qutebrowser
+    rclone
     remmina
     ripgrep
     shotcut
