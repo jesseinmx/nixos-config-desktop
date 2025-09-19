@@ -43,6 +43,7 @@
     granted
     htop
     insync
+    jq
     kdePackages.kdenlive
     kitty
     kubectl
@@ -71,6 +72,7 @@
     vagrant
     vault
     vim
+    vlc
     vscode-fhs
     wakatime
     wget
