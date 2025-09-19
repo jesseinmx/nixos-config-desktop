@@ -77,7 +77,13 @@
     wakatime
     wget
     wireplumber
-    wl-clipboard
+    # wl-clipboard  # wayland
+    xclip
+    xsel
+    xorg.xev
+    xorg.xrandr
+    xorg.xset
+    xorg.xinput
     xdg-desktop-portal-gtk
     xdg-utils
     yq

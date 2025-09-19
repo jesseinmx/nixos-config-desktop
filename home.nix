@@ -2,7 +2,14 @@
 {
   home.stateVersion = "25.05";
 
-  home.sessionVariables.XCURSOR_SIZE = "28";
+  home.sessionVariables = {
+    XCURSOR_SIZE = "28";
+    # Force X11 for applications that might default to Wayland
+    GDK_BACKEND = "x11";
+    QT_QPA_PLATFORM = "xcb";
+    SDL_VIDEODRIVER = "x11";
+    _JAVA_AWT_WM_NONREPARENTING = "1";
+  };
 
   # ===== GNOME Dash-to-Dock (Auto-hide) — PACKAGES (START) =====
   home.packages = [
@@ -10,7 +17,9 @@
     pkgs.gnome-screenshot
     pkgs.gnomeExtensions.penguin-ai-chatbot
     pkgs.gnomeExtensions.appindicator
-    pkgs.wl-clipboard  # for wl-copy
+    # pkgs.wl-clipboard  # for wl-copy  # wayland
+    pkgs.xclip
+    pkgs.xsel
   ];
   # ===== GNOME Dash-to-Dock (Auto-hide) — PACKAGES (END) =====
 
@@ -68,13 +77,13 @@
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
       name = "Screenshot area";
-      command = "bash -c 'NAME=\$(date +%Y%m%d-%H%M%S) && gnome-screenshot --area --file=${config.home.homeDirectory}/screenshots/screenshot-\$NAME.png && wl-copy < ${config.home.homeDirectory}/screenshots/screenshot-\$NAME.png'";
+      command = "bash -c 'NAME=\$(date +%Y%m%d-%H%M%S) && gnome-screenshot --area --file=${config.home.homeDirectory}/screenshots/screenshot-\$NAME.png && xclip -selection clipboard -t image/png < ${config.home.homeDirectory}/screenshots/screenshot-\$NAME.png'";
       binding = "<Alt><Shift>1";
     };
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
       name = "Screenshot window";
-      command = "bash -c 'NAME=\$(date +%Y%m%d-%H%M%S) && gnome-screenshot --window --file=${config.home.homeDirectory}/screenshots/screenshot-\$NAME.png && wl-copy < ${config.home.homeDirectory}/screenshots/screenshot-\$NAME.png'";
+      command = "bash -c 'NAME=\$(date +%Y%m%d-%H%M%S) && gnome-screenshot --window --file=${config.home.homeDirectory}/screenshots/screenshot-\$NAME.png && xclip -selection clipboard -t image/png < ${config.home.homeDirectory}/screenshots/screenshot-\$NAME.png'";
       binding = "<Alt><Shift>2";
     };
 

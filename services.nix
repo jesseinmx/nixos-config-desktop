@@ -3,7 +3,24 @@
 
 {
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  services.xserver = {
+    enable = true;
+    
+    # Disable Wayland for GNOME
+    displayManager.gdm.wayland = false;
+    
+    # X11 input configuration
+    libinput = {
+      enable = true;
+      touchpad = {
+        naturalScrolling = true;
+        tapping = true;
+      };
+      mouse = {
+        naturalScrolling = true;
+      };
+    };
+  };
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -12,7 +29,7 @@
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  # services.xserver.libinput.enable = true;  # moved to xserver block above
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
