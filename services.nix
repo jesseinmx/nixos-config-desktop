@@ -5,9 +5,6 @@
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
-    
-    # Disable Wayland for GNOME
-    displayManager.gdm.wayland = false;
   };
 
   # X11 input configuration
@@ -37,10 +34,8 @@
   # Enable xrdp
   services.xrdp = {
     enable = true;
-    defaultWindowManager = "${pkgs.gnome-session}/bin/gnome-session";
   };
 
-  services.xserver.desktopManager.xfce.enable = true;
 
   services.avahi = {
     enable = true;
