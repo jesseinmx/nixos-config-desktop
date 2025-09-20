@@ -33,10 +33,12 @@
     eza
     ffmpeg-full
     firefox
+    flameshot
     gemini-cli
     ghostty
     git
     git-open
+    gnome-screenshot
     gnumeric
     go
     google-chrome
@@ -77,7 +79,13 @@
     wakatime
     wget
     wireplumber
-    wl-clipboard
+    # wl-clipboard  # wayland
+    xclip
+    xsel
+    xorg.xev
+    xorg.xrandr
+    xorg.xset
+    xorg.xinput
     xdg-desktop-portal-gtk
     xdg-utils
     yq

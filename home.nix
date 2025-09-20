@@ -1,8 +1,17 @@
 { config, pkgs, ... }:
 {
+  home.username = "jesseinmx";
+  home.homeDirectory = "/home/jesseinmx";
   home.stateVersion = "25.05";
 
-  home.sessionVariables.XCURSOR_SIZE = "28";
+  home.sessionVariables = {
+    XCURSOR_SIZE = "28";
+    # Force X11 for applications that might default to Wayland
+    GDK_BACKEND = "x11";
+    QT_QPA_PLATFORM = "xcb";
+    SDL_VIDEODRIVER = "x11";
+    _JAVA_AWT_WM_NONREPARENTING = "1";
+  };
 
   # ===== GNOME Dash-to-Dock (Auto-hide) — PACKAGES (START) =====
   home.packages = [
@@ -10,7 +19,9 @@
     pkgs.gnome-screenshot
     pkgs.gnomeExtensions.penguin-ai-chatbot
     pkgs.gnomeExtensions.appindicator
-    pkgs.wl-clipboard  # for wl-copy
+    # pkgs.wl-clipboard  # for wl-copy  # wayland
+    pkgs.xclip
+    pkgs.xsel
   ];
   # ===== GNOME Dash-to-Dock (Auto-hide) — PACKAGES (END) =====
 
@@ -67,20 +78,23 @@
     };
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
-      name = "Screenshot area";
-      command = "bash -c 'NAME=\$(date +%Y%m%d-%H%M%S) && gnome-screenshot --area --file=${config.home.homeDirectory}/screenshots/screenshot-\$NAME.png && wl-copy < ${config.home.homeDirectory}/screenshots/screenshot-\$NAME.png'";
+      name = "Screenshot area (flameshot)";
+      # The -p flag saves to the path, and the -c flag copies to the clipboard
+      command = "flameshot gui -p ${config.home.homeDirectory}/screenshots -c";
       binding = "<Alt><Shift>1";
     };
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
-      name = "Screenshot window";
-      command = "bash -c 'NAME=\$(date +%Y%m%d-%H%M%S) && gnome-screenshot --window --file=${config.home.homeDirectory}/screenshots/screenshot-\$NAME.png && wl-copy < ${config.home.homeDirectory}/screenshots/screenshot-\$NAME.png'";
+      name = "Screenshot screen (flameshot)";
+      # The -p flag saves to the path, and the -c flag copies to the clipboard
+      command = "flameshot screen -p ${config.home.homeDirectory}/screenshots -c";
       binding = "<Alt><Shift>2";
     };
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
-      name = "Screenshot full";
-      command = "gnome-screenshot --clipboard --interactive";
+      name = "Screenshot full (flameshot)";
+      # The -p flag saves to the path, and the -c flag copies to the clipboard
+      command = "flameshot full -p ${config.home.homeDirectory}/screenshots -c";
       binding = "<Alt><Shift>3";
     };
 

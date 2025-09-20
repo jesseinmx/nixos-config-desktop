@@ -13,7 +13,7 @@
   environment.systemPackages = with pkgs; [
     gnome-tweaks
  
-    # Cursor themes for GNOME/Wayland
+    # Cursor themes for GNOME/X11  # wayland
     # adwaita-icon-theme
     # afterglow-cursors-recolored
     # bibata-cursors
@@ -31,12 +31,20 @@
     # Additional cursor support
     # hicolor-icon-theme
  
-    # Wayland-specific cursor packages
-    libsForQt5.breeze-qt5
+    # Wayland-specific cursor packages  # wayland
+    # libsForQt5.breeze-qt5  # wayland
     gnome-backgrounds
  
     # GNOME extensions
     gnomeExtensions.appindicator
+
+    # X11-specific packages
+    xorg.xev
+    xorg.xrandr
+    xorg.xset
+    xorg.xinput
+    xclip
+    xsel
 
   ];
 }

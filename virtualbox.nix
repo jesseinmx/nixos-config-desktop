@@ -14,9 +14,10 @@
   # Add your user to the vboxusers group for permissions.
   users.extraGroups.vboxusers.members = [ "jesseinmx" ];
 
-  # Add required packages for Wayland support.
+  # Add required packages for X11 support.  # wayland
   environment.systemPackages = with pkgs; [
-    qt6.qtwayland
+    # qt6.qtwayland  # wayland
+    qt6.qtbase
   ];
 
   # Block KVM Kernel

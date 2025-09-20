@@ -22,18 +22,29 @@
           # Import Home Manager as a NixOS module HERE (and only here)
           home-manager.nixosModules.home-manager
 
-          # Correctly import your home.nix for the user 'jesseinmx'
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-	    home-manager.backupFileExtension = "backup";
-
-
+            home-manager.backupFileExtension = "backup";
             home-manager.users.jesseinmx = {
               imports = [ ./home.nix ];
             };
           }
         ];
+      };
+    };
+
+    # Add Home Manager configurations for standalone use
+    homeConfigurations = {
+      jesseinmx = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.${system};
+        modules = [ ./home.nix ];
+        extraSpecialArgs = { 
+          inherit nixpkgs; 
+          config = { 
+            allowUnfree = true; 
+          }; 
+        };
       };
     };
   };
