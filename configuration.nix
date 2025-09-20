@@ -8,7 +8,7 @@
     ./pkgs.nix
     ./virtualbox.nix
     # ./vagrant.nix
-    ./gnome.nix
+    ./desktop.nix
     ./firewall.nix
     ./services.nix
   ];
