@@ -74,6 +74,72 @@
   # services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.enlightenment.enable = false;
 
+
+  # =========================
+  # Cinnamon Desktop
+  # =========================
+  # Disabled by default. Consider LightDM or GDM as display manager.
+  # services.xserver.displayManager.lightdm.enable = true;
+  services.xserver.desktopManager.cinnamon.enable = false;
+
+  # =========================
+  # Budgie Desktop
+  # =========================
+  # Disabled by default. Budgie typically works with GDM or LightDM.
+  # services.xserver.displayManager.lightdm.enable = true;
+  services.xserver.desktopManager.budgie.enable = false;
+
+  # =========================
+  # Deepin Desktop
+  # =========================
+  # Disabled by default. Deepin commonly uses LightDM.
+  # services.xserver.displayManager.lightdm.enable = true;
+  services.xserver.desktopManager.deepin.enable = false;
+
+  # =========================
+  # LXQt Desktop
+  # =========================
+  # Disabled by default. LXQt commonly uses SDDM or LightDM.
+  # services.xserver.displayManager.sddm.enable = true;
+  services.xserver.desktopManager.lxqt.enable = false;
+
+  # =========================
+  # MATE Desktop
+  # =========================
+  # Disabled by default. MATE works with LightDM or GDM.
+  # services.xserver.displayManager.lightdm.enable = true;
+  services.xserver.desktopManager.mate.enable = false;
+
+  # =========================
+  # =========================
+  # Fluxbox (Window Manager)
+  # =========================
+  # Disabled by default.
+  services.xserver.windowManager.fluxbox.enable = false;
+
+  # =========================
+  # IceWM (Window Manager)
+  # =========================
+  # Disabled by default.
+  services.xserver.windowManager.icewm.enable = false;
+
+  # =========================
+  # i3 (Window Manager)
+  # =========================
+  # Disabled by default.
+  services.xserver.windowManager.i3.enable = false;
+
+  # =========================
+  # Openbox (Window Manager)
+  # =========================
+  # Disabled by default.
+  services.xserver.windowManager.openbox.enable = false;
+
+  # =========================
+  # AwesomeWM (Window Manager)
+  # =========================
+  # Disabled by default.
+  services.xserver.windowManager.awesome.enable = false;
   # Optional: add Enlightenment-related packages here
   # environment.systemPackages = (with pkgs; [ enlightenment.terminology ]) ++ environment.systemPackages;
 }
