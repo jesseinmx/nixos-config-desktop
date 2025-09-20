@@ -1,5 +1,6 @@
 { config, pkgs, ... }:
 {
+  imports = [ ./nvim.nix ];
   home.username = "jesseinmx";
   home.homeDirectory = "/home/jesseinmx";
   home.stateVersion = "25.05";
