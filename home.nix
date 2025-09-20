@@ -1,5 +1,7 @@
 { config, pkgs, ... }:
 {
+  home.username = "jesseinmx";
+  home.homeDirectory = "/home/jesseinmx";
   home.stateVersion = "25.05";
 
   home.sessionVariables = {
@@ -76,20 +78,23 @@
     };
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
-      name = "Screenshot area";
-      command = "bash -c 'NAME=\$(date +%Y%m%d-%H%M%S) && gnome-screenshot --area --file=${config.home.homeDirectory}/screenshots/screenshot-\$NAME.png && xclip -selection clipboard -t image/png < ${config.home.homeDirectory}/screenshots/screenshot-\$NAME.png'";
+      name = "Screenshot area (flameshot)";
+      # The -p flag saves to the path, and the -c flag copies to the clipboard
+      command = "flameshot gui -p ${config.home.homeDirectory}/screenshots -c";
       binding = "<Alt><Shift>1";
     };
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
-      name = "Screenshot window";
-      command = "bash -c 'NAME=\$(date +%Y%m%d-%H%M%S) && gnome-screenshot --window --file=${config.home.homeDirectory}/screenshots/screenshot-\$NAME.png && xclip -selection clipboard -t image/png < ${config.home.homeDirectory}/screenshots/screenshot-\$NAME.png'";
+      name = "Screenshot screen (flameshot)";
+      # The -p flag saves to the path, and the -c flag copies to the clipboard
+      command = "flameshot screen -p ${config.home.homeDirectory}/screenshots -c";
       binding = "<Alt><Shift>2";
     };
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
-      name = "Screenshot full";
-      command = "gnome-screenshot --clipboard --interactive";
+      name = "Screenshot full (flameshot)";
+      # The -p flag saves to the path, and the -c flag copies to the clipboard
+      command = "flameshot full -p ${config.home.homeDirectory}/screenshots -c";
       binding = "<Alt><Shift>3";
     };
 

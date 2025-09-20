@@ -33,10 +33,12 @@
     eza
     ffmpeg-full
     firefox
+    flameshot
     gemini-cli
     ghostty
     git
     git-open
+    gnome-screenshot
     gnumeric
     go
     google-chrome

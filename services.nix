@@ -8,17 +8,17 @@
     
     # Disable Wayland for GNOME
     displayManager.gdm.wayland = false;
-    
-    # X11 input configuration
-    libinput = {
-      enable = true;
-      touchpad = {
-        naturalScrolling = true;
-        tapping = true;
-      };
-      mouse = {
-        naturalScrolling = true;
-      };
+  };
+
+  # X11 input configuration
+  services.libinput = {
+    enable = true;
+    touchpad = {
+      naturalScrolling = true;
+      tapping = true;
+    };
+    mouse = {
+      naturalScrolling = true;
     };
   };
 
@@ -33,6 +33,14 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+
+  # Enable xrdp
+  services.xrdp = {
+    enable = true;
+    defaultWindowManager = "${pkgs.gnome-session}/bin/gnome-session";
+  };
+
+  services.xserver.desktopManager.xfce.enable = true;
 
   services.avahi = {
     enable = true;
@@ -52,9 +60,9 @@
     #jack.enable = true;
   };
 
-  # Enable automatic login for the user.
-  services.displayManager.autoLogin.enable = true;
-  services.displayManager.autoLogin.user = "jesseinmx";
+  # # Enable automatic login for the user.
+  # services.displayManager.autoLogin.enable = true;
+  # services.displayManager.autoLogin.user = "jesseinmx";
 
   # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
   systemd.services."getty@tty1".enable = false;

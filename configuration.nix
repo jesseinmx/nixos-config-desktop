@@ -35,15 +35,10 @@
   users.users.jesseinmx = {
     isNormalUser = true;
     description = "Jesse";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "video" "render" ];
   };
 
-  # Home Manager config (uses the same pkgs and user packages)
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    users.jesseinmx = import ./home.nix;
-  };
+  # Home Manager config is handled in flake.nix
 
   # Apps
   programs.firefox.enable = true;
