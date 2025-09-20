@@ -14,6 +14,7 @@
   # General system packages
   environment.systemPackages = with pkgs; [
     
+    abiword
     age
     aider-chat-with-browser
     alacritty
