@@ -31,6 +31,7 @@
     curl
     dig
     docker
+    easyeffects
     eza
     ffmpeg-full
     firefox

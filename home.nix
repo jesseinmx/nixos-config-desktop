@@ -17,8 +17,9 @@
   home.packages = [
     pkgs.gnomeExtensions.dash-to-dock
     pkgs.gnome-screenshot
-    pkgs.gnomeExtensions.penguin-ai-chatbot
     pkgs.gnomeExtensions.appindicator
+    pkgs.gnomeExtensions.search-light
+    pkgs.gnomeExtensions.easyeffects-preset-selector
     # pkgs.wl-clipboard  # for wl-copy  # wayland
     pkgs.xclip
     pkgs.xsel
@@ -47,6 +48,7 @@
         "dash-to-dock@micxgx.gmail.com"
         "penguin-ai-chatbot@coffeecionado.gitlab.io"
         "appindicatorsupport@rgcjonas.gmail.com"
+	"search-light@icedman.github.com"
       ];
       favorite-apps = [
         "org.gnome.Nautilus.desktop"
