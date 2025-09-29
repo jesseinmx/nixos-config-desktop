@@ -46,7 +46,7 @@
     google-chrome
     granted
     htop
-    insync
+    inkscape
     jq
     kdePackages.kdenlive
     kitty
@@ -68,6 +68,7 @@
     rclone
     remmina
     ripgrep
+    rpi-imager
     shotcut
     sops
     tmux
