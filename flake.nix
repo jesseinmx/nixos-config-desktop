@@ -7,44 +7,31 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }:
+  outputs = { self, nixpkgs, home-manager, ... }@inputs: # <-- Note the @inputs
   let
     system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.${system};
   in {
+    # 1. NIXOS CONFIGURATION (SYSTEM-ONLY)
+    #    Build with: sudo nixos-rebuild switch --flake .#nixos
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
         inherit system;
-
+        specialArgs = { inherit inputs; }; # Pass flake inputs to modules
         modules = [
-          # Your system config (must NOT reference `home-manager`)
+          # Your system config, now completely decoupled from home-manager
           ./configuration.nix
-
-          # Import Home Manager as a NixOS module HERE (and only here)
-          home-manager.nixosModules.home-manager
-
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = "backup";
-            home-manager.users.jesseinmx = {
-              imports = [ ./home.nix ];
-            };
-          }
         ];
       };
     };
 
-    # Add Home Manager configurations for standalone use
+    # 2. HOME-MANAGER CONFIGURATION (USER-ONLY)
+    #    Deploy with: home-manager switch --flake .#jesseinmx
     homeConfigurations = {
       jesseinmx = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${system};
-        modules = [ ./home.nix ];
-        extraSpecialArgs = { 
-          inherit nixpkgs; 
-          config = { 
-            allowUnfree = true; 
-          }; 
-        };
+        inherit pkgs;
+        extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to modules
+        modules = [ ./home/jesseinmx/default.nix { nixpkgs.config.allowUnfree = true; } ];
       };
     };
   };

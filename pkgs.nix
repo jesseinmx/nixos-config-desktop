@@ -45,6 +45,7 @@
     go
     google-chrome
     granted
+    home-manager
     htop
     inkscape
     jq
