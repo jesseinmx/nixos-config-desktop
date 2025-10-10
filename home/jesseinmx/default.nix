@@ -1,4 +1,12 @@
 { config, pkgs, ... }:
+let
+  bash-my-aws = pkgs.fetchFromGitHub {
+    owner = "bash-my-aws";
+    repo = "bash-my-aws";
+    rev = "master";
+    sha256 = "sha256-NkTCrbv3p65xuxltYQCNArIMsjBksz5rzoYbdPdCB3s=";
+  };
+in
 {
   home.username = "jesseinmx";
   home.homeDirectory = "/home/jesseinmx";
@@ -11,6 +19,22 @@
     QT_QPA_PLATFORM = "xcb";
     SDL_VIDEODRIVER = "x11";
     _JAVA_AWT_WM_NONREPARENTING = "1";
+
+    # From .bash_profile
+    EDITOR = "vi";
+    VISUAL = "nvim";
+    MYVIMRC = "$HOME/.config/nvim/init.vim";
+    TERM = "xterm-256color";
+    BMA_COLUMNISE_ONLY_WHEN_TERMINAL_PRESENT = "true";
+    BASH_SILENCE_DEPRECATION_WARNING = "1";
+    GOPATH = "$HOME/go";
+    GOBIN = "$GOPATH/bin";
+    GO111MODULE = "auto";
+    VAULT_USER = "jperry2";
+    AWS_VAULT_USER = "jperry2";
+    SOPS_AGE_KEY_FILE = "$HOME/.sops/nebula.age";
+    SOPS_AGE_RECIPIENTS = "age104xn5xt46wgg3n27em955qm9wkdwrxafx4crtqgq2fzz6zfn3s7slskqwt";
+    VAGRANT_DEFAULT_PROVIDER = "virtualbox";
   };
 
   # ===== GNOME Dash-to-Dock (Auto-hide) — PACKAGES (START) =====
@@ -23,8 +47,28 @@
     # pkgs.wl-clipboard  # for wl-copy  # wayland
     pkgs.xclip
     pkgs.xsel
+    pkgs.pyenv
+    pkgs.fzf
+    pkgs.zoxide # Provides 'z' command
+    pkgs.ripgrep # for fzf
+    
+    pkgs.cargo
   ];
   # ===== GNOME Dash-to-Dock (Auto-hide) — PACKAGES (END) =====
+
+  programs.pyenv = {
+    enable = true;
+  };
+
+  programs.fzf = {
+    enable = true;
+    enableBashIntegration = true;
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableBashIntegration = true;
+  };
 
   # GNOME per-user settings via dconf
   # NOTE: Do NOT set programs.dconf.enable here — it's not defined in your HM module set.
@@ -102,7 +146,7 @@
 
   #   "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3" = {
   #     name = "Record video";
-  #     command = "dbus-send --session --type=method_call --dest=org.gnome.Shell /org/gnome/Shell org.gnome.Shell.Eval string:'Main.screencast.toggle();'";
+  #     command = "dbus-send --session --type=method_call --dest=org.gnome.Shell /org/gnome/Shell org.gnome.Shell.Eval string:\'Main.screencast.toggle();\'";
   #     binding = "<Alt><Shift>4";
   #   };
 
@@ -175,6 +219,54 @@
         };
       };
     };
+  };
+
+  programs.bash = {
+    enable = true;
+    enableCompletion = true;
+    shellOptions = [ "histappend" ];
+    historyControl = [ "ignoredups" "erasedups" ];
+    historySize = 10000;
+    historyFileSize = 10000;
+    shellAliases = {
+      assume = ". assume";
+      nvim = "~/nvim.appimage";
+    };
+
+    initExtra = ''
+      # Your existing bash-my-aws setup
+      export BMA_HOME="${bash-my-aws}"
+      export PATH="$PATH:$BMA_HOME/bin"
+      source "$BMA_HOME/aliases"
+      source "$BMA_HOME/bash_completion.sh"
+
+      # From .bash_profile
+      set -o vi
+      export PROMPT_COMMAND="history -a; history -n"
+      if command -v tput >/dev/null && tput setaf 1 >/dev/null 2>&1; then
+          PS1="\[$(tput setaf 39)\]\u\[$(tput setaf 81)\]@\[$(tput setaf 77)\]\h \[$(tput setaf 226)\]\w \[$(tput sgr0)\]$ "
+      fi
+
+      # GPG TTY
+      export GPG_TTY=$(tty)
+
+      # FZF default command
+      if type rg &> /dev/null; then
+          export FZF_DEFAULT_DEFAULT_COMMAND='rg --files --hidden --ignore-file ~/.gitignore'
+      elif type ag &> /dev/null; then
+          export FZF_DEFAULT_COMMAND='ag -p ~/.gitignore -g ""'
+      fi
+
+      # Pyenv
+      if command -v pyenv 1>/dev/null 2>&1; then
+        eval "$(pyenv init -)"
+      fi
+
+      # Source custom scripts if they exist
+      [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
+      [ -f $HOME/.profile.d/bethel.sh ] && source $HOME/.profile.d/bethel.sh
+      [ -f ~/.aliases ] && . ~/.aliases
+    '';
   };
 
 }
