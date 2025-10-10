@@ -23,6 +23,7 @@
     awscli
     bat
     bitwarden
+    bitwarden-cli
     chezmoi
     chromium
     cifs-utils
@@ -52,6 +53,7 @@
     kdePackages.kdenlive
     kitty
     kubectl
+    lazydocker
     lazygit
     neovim
     nerd-fonts.droid-sans-mono
@@ -71,6 +73,7 @@
     ripgrep
     rpi-imager
     shotcut
+    signal-desktop
     sops
     tmux
     tree

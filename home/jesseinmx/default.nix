@@ -160,4 +160,21 @@
       "editor.minimap.enabled" = false;
     };
   };
+
+  programs.ssh = {
+    enable = true;
+    matchBlocks = {
+      "10.1.1.*" = {
+        extraOptions = {
+          StrictHostKeyChecking = "no";
+        };
+      };
+      "192.168.88.*" = {
+        extraOptions = {
+          StrictHostKeyChecking = "no";
+        };
+      };
+    };
+  };
+
 }
