@@ -11,6 +11,7 @@ in
   imports = [
     ./bash.nix
     ./neovim.nix
+    ./tmux.nix
   ];
 
   home.username = "jesseinmx";
