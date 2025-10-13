@@ -1,8 +1,21 @@
 { config, pkgs, ... }:
-
+let
+  bash-my-aws = pkgs.fetchFromGitHub {
+    owner = "bash-my-aws";
+    repo = "bash-my-aws";
+    rev = "master";
+    sha256 = "sha256-NkTCrbv3p65xuxltYQCNArIMsjBksz5rzoYbdPdCB3s=";
+  };
+in
 {
   programs.bash = {
-    enable = true; # Ensure bash is enabled for these aliases
+    enable = true;
+    enableCompletion = true;
+    shellOptions = [ "histappend" ];
+    historyControl = [ "ignoredups" "erasedups" ];
+    historySize = 10000;
+    historyFileSize = 10000;
+
     shellAliases = {
       # General
       less = "less -R";
@@ -26,7 +39,7 @@
       gpof = "git push --force-with-lease origin HEAD";
       gpo = "git push origin HEAD";
       gpos = "git push -o ci.skip";
-      gq = "git status && git add . && git commit -m \"quick commit\" && git push origin HEAD";
+      gq = "git status && git add . && git commit -m "quick commit" && git push origin HEAD";
       oops = "git add -p && git commit --amend";
 
       # lazygit
@@ -34,11 +47,9 @@
 
       # AWS
       awswhoami = "aws sts get-caller-identity";
-      # loadaws will be a function in initExtra
 
       # bat/batcat
       cat = "bat --plain";
-      # alias less=\"bat\" - this would override the less -R alias. I'll keep the less -R for now.
 
       # Chrome
       chrome = "google-chrome-stable";
@@ -60,7 +71,6 @@
       tmj = "tmux new -s jp \; split-window -v \; split-window -h \; select-pane -t 0 \;";
 
       # Vagrant
-      # vagrant is commented out in original
       "vagrant-rdp" = "yes | xfreerdp /v:localhost:33389 /u:vagrant /p:vagrant &";
 
       # xclip (X11 clipboard utilities - pbcopy/pbpaste equivalents)
@@ -87,10 +97,41 @@
 
       # rclone
       "jwstream-sync" = "rclone sync -P jwstream:/jperry-renders ~/Videos/jwstream/";
+
+      # From default.nix
+      assume = ". assume";
+      nvim = "~/nvim.appimage";
     };
 
-    initExtra = ''
-      # Functions from original aliases
+    initExtra = '''
+      # --- Settings from former default.nix ---
+      export BMA_HOME="${bash-my-aws}"
+      export PATH="$PATH:$BMA_HOME/bin"
+      source "$BMA_HOME/aliases"
+      source "$BMA_HOME/bash_completion.sh"
+
+      set -o vi
+      export PROMPT_COMMAND="history -a; history -n"
+      if command -v tput >/dev/null && tput setaf 1 >/dev/null 2>&1; then
+          PS1="\[$(tput setaf 39)\]\u\[$(tput setaf 81)\]@\[$(tput setaf 77)\]\h \[$(tput setaf 226)\]\w \[$(tput sgr0)\]$ "
+      fi
+
+      export GPG_TTY=$(tty)
+
+      if type rg &> /dev/null; then
+          export FZF_DEFAULT_DEFAULT_COMMAND='rg --files --hidden --ignore-file ~/.gitignore'
+      elif type ag &> /dev/null; then
+          export FZF_DEFAULT_COMMAND='ag -p ~/.gitignore -g ""'
+      fi
+
+      if command -v pyenv 1>/dev/null 2>&1; then
+        eval "$(pyenv init -)"
+      fi
+
+      [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
+      [ -f $HOME/.profile.d/bethel.sh ] && source $HOME/.profile.d/bethel.sh
+
+      # --- Functions from former aliases.nix ---
       cheat() { curl "https://cheat.sh/$*"; }
 
       flynn_browser() {
@@ -104,7 +145,6 @@
         wmctrl -r "Flynn's Browser" -e 0,-1,-1,1920,1080
       }
 
-      # NixOS function
       nix_test() {
         # Run test (dry-activate) without changing current shell directory
         (cd ~/nixos-config-desktop && nixos-rebuild dry-build)
@@ -123,13 +163,33 @@
         fi
       }
 
-      # AWS loadaws function
       loadaws() {
-        . ~/git/load-up-iam.sh
-      }
+            . ~/git/load-up-iam.sh
+          }
 
-      # Source bethel scripts
-      source /home/jesseinmx/.profile.d/bethel.sh
-    '';
+          # --- From .bashrc integration ---
+          # Source a local, non-managed aliases file if it exists for quick overrides
+          [ -f ~/.aliases ] && . ~/.aliases
+
+          # --- From .bash_profile integration ---
+          # Source a local, non-managed profile for login-specific settings
+          [ -f ~/.profile.local ] && . ~/.profile.local
+    ''';
+  };
+
+  
+
+  programs.pyenv = {
+    enable = true;
+  };
+
+  programs.fzf = {
+    enable = true;
+    enableBashIntegration = true;
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableBashIntegration = true;
   };
 }

@@ -49,30 +49,18 @@ in
     pkgs.gnomeExtensions.search-light
     pkgs.gnomeExtensions.easyeffects-preset-selector
     # pkgs.wl-clipboard  # for wl-copy  # wayland
-    pkgs.xclip
-    pkgs.xsel
+    
+    
     pkgs.pyenv
     pkgs.fzf
     pkgs.zoxide # Provides 'z' command
-    pkgs.ripgrep # for fzf
     
-    pkgs.cargo
+    
+    
   ];
   # ===== GNOME Dash-to-Dock (Auto-hide) — PACKAGES (END) =====
 
-  programs.pyenv = {
-    enable = true;
-  };
-
-  programs.fzf = {
-    enable = true;
-    enableBashIntegration = true;
-  };
-
-  programs.zoxide = {
-    enable = true;
-    enableBashIntegration = true;
-  };
+  
 
   # GNOME per-user settings via dconf
   # NOTE: Do NOT set programs.dconf.enable here — it's not defined in your HM module set.
@@ -225,51 +213,4 @@ in
     };
   };
 
-  programs.bash = {
-    enable = true;
-    enableCompletion = true;
-    shellOptions = [ "histappend" ];
-    historyControl = [ "ignoredups" "erasedups" ];
-    historySize = 10000;
-    historyFileSize = 10000;
-    shellAliases = {
-      assume = ". assume";
-      nvim = "~/nvim.appimage";
-    };
-
-    initExtra = ''
-      # Your existing bash-my-aws setup
-      export BMA_HOME="${bash-my-aws}"
-      export PATH="$PATH:$BMA_HOME/bin"
-      source "$BMA_HOME/aliases"
-      source "$BMA_HOME/bash_completion.sh"
-
-      # From .bash_profile
-      set -o vi
-      export PROMPT_COMMAND="history -a; history -n"
-      if command -v tput >/dev/null && tput setaf 1 >/dev/null 2>&1; then
-          PS1="\[$(tput setaf 39)\]\u\[$(tput setaf 81)\]@\[$(tput setaf 77)\]\h \[$(tput setaf 226)\]\w \[$(tput sgr0)\]$ "
-      fi
-
-      # GPG TTY
-      export GPG_TTY=$(tty)
-
-      # FZF default command
-      if type rg &> /dev/null; then
-          export FZF_DEFAULT_DEFAULT_COMMAND='rg --files --hidden --ignore-file ~/.gitignore'
-      elif type ag &> /dev/null; then
-          export FZF_DEFAULT_COMMAND='ag -p ~/.gitignore -g ""'
-      fi
-
-      # Pyenv
-      if command -v pyenv 1>/dev/null 2>&1; then
-        eval "$(pyenv init -)"
-      fi
-
-      # Source custom scripts if they exist
-      [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
-      [ -f $HOME/.profile.d/bethel.sh ] && source $HOME/.profile.d/bethel.sh
-    '';
-  };
-
-}
+  }

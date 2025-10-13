@@ -24,6 +24,7 @@
     bitwarden
     bitwarden-cli
     chezmoi
+    cargo
     chromium
     cifs-utils
     codex
@@ -65,6 +66,7 @@
     obs-studio
     packer
     pavucontrol
+    pyenv
     pipewire
     podman
     psmisc
