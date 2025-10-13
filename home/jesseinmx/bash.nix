@@ -57,52 +57,52 @@ in
       assume = ". assume";
     };
 
-    # initExtra = '''
-    #   export BMA_HOME="${bash-my-aws}"
-    #   export PATH="$PATH:$BMA_HOME/bin"
-    #   source "$BMA_HOME/aliases"
-    #   source "$BMA_HOME/bash_completion.sh"
-    #   set -o vi
-    #   export PROMPT_COMMAND="history -a; history -n"
-    #   if command -v tput >/dev/null && tput setaf 1 >/dev/null 2>&1; then
-    #       PS1="\[$(tput setaf 39)\]\u\[$(tput setaf 81)\]@\[$(tput setaf 77)\]\h \[$(tput setaf 226)\]\w \[$(tput sgr0)\]$ "
-    #   fi
-    #   export GPG_TTY=$(tty)
-    #   if type rg &> /dev/null; then
-    #       export FZF_DEFAULT_DEFAULT_COMMAND='rg --files --hidden --ignore-file ~/.gitignore'
-    #   elif type ag &> /dev/null; then
-    #       export FZF_DEFAULT_COMMAND='ag -p ~/.gitignore -g ""'
-    #   fi
-    #   if command -v pyenv 1>/dev/null 2>&1; then
-    #     eval "$(pyenv init -)"
-    #   fi
-    #   [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
-    #   [ -f $HOME/.profile.d/bethel.sh ] && source $HOME/.profile.d/bethel.sh
-    #   cheat() { curl "https://cheat.sh/$*"; }
-    #   flynn_browser() {
-    #     qutebrowser &
-    #     sleep 2
-    #     wmctrl -r "Flynn's Browser" -e 0,-1,-1,1920,1080
-    #   }
-    #   nix_test() {
-    #     (cd ~/nixos-config-desktop && nixos-rebuild dry-build)
-    #     local status=$?
-    #     if [ $status -ne 0 ]; then
-    #       return $status
-    #     fi
-    #     local ans
-    #     read -r -p "Apply changes now with nix-apply? [y/N] " ans || true
-    #     if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
-    #       (cd ~/nixos-config-desktop && sudo nixos-rebuild switch --flake .)
-    #     else
-    #       echo "Skip applying changes."
-    #     fi
-    #   }
-    #   loadaws() {
-    #     . ~/git/load-up-iam.sh
-    #   }
-    #   [ -f ~/.profile.local ] && . ~/.profile.local
-    # ''';
+    initExtra = ''
+      export BMA_HOME="${bash-my-aws}"
+      export PATH="$PATH:$BMA_HOME/bin"
+      source "$BMA_HOME/aliases"
+      source "$BMA_HOME/bash_completion.sh"
+      set -o vi
+      export PROMPT_COMMAND="history -a; history -n"
+      if command -v tput >/dev/null && tput setaf 1 >/dev/null 2>&1; then
+          PS1="\[$(tput setaf 39)\]\u\[$(tput setaf 81)\]@\[$(tput setaf 77)\]\h \[$(tput setaf 226)\]\w \[$(tput sgr0)\]$ "
+      fi
+      export GPG_TTY=$(tty)
+      if type rg &> /dev/null; then
+          export FZF_DEFAULT_DEFAULT_COMMAND='rg --files --hidden --ignore-file ~/.gitignore'
+      elif type ag &> /dev/null; then
+          export FZF_DEFAULT_COMMAND='ag -p ~/.gitignore -g ""'
+      fi
+      if command -v pyenv 1>/dev/null 2>&1; then
+        eval "$(pyenv init -)"
+      fi
+      [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
+      [ -f $HOME/.profile.d/bethel.sh ] && source $HOME/.profile.d/bethel.sh
+      cheat() { curl "https://cheat.sh/$*"; }
+      flynn_browser() {
+        qutebrowser &
+        sleep 2
+        wmctrl -r "Flynn's Browser" -e 0,-1,-1,1920,1080
+      }
+      nix_test() {
+        (cd ~/nixos-config-desktop && nixos-rebuild dry-build)
+        local status=$?
+        if [ $status -ne 0 ]; then
+          return $status
+        fi
+        local ans
+        read -r -p "Apply changes now with nix-apply? [y/N] " ans || true
+        if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
+          (cd ~/nixos-config-desktop && sudo nixos-rebuild switch --flake .)
+        else
+          echo "Skip applying changes."
+        fi
+      }
+      loadaws() {
+        . ~/git/load-up-iam.sh
+      }
+      [ -f ~/.profile.local ] && . ~/.profile.local
+    '';
   };
 
   programs.pyenv = {
