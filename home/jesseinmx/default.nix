@@ -9,7 +9,8 @@ let
 in
 {
   imports = [
-    ./aliases.nix
+    ./bash.nix
+    ./neovim.nix
   ];
 
   home.username = "jesseinmx";

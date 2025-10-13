@@ -84,8 +84,8 @@ in
       tree = "tree -a";
 
       # NixOS
-      "nix-test" = "nix_test"; # This will be a function
-      "nix-apply" = "(cd ~/nixos-config-desktop && sudo nixos-rebuild switch --flake .)";
+      nixtest = "nix_test"; # This will be a function
+      nixapply = "(cd ~/nixos-config-desktop && sudo nixos-rebuild switch --flake .)";
 
       # Orca Slicer
       orcaup = "docker compose --file ~/git/jesseinmx/orcaslicer/docker-compose.yaml up -d";
@@ -100,7 +100,7 @@ in
 
       # From default.nix
       assume = ". assume";
-      nvim = "~/nvim.appimage";
+      
     };
 
     initExtra = '''
