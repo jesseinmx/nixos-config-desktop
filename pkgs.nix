@@ -13,7 +13,6 @@
 
   # General system packages
   environment.systemPackages = with pkgs; [
-    
     abiword
     age
     aider-chat-with-browser
@@ -37,10 +36,12 @@
     ffmpeg-full
     firefox
     flameshot
+    freerdp
     gemini-cli
     ghostty
     git
     git-open
+    gnome-pomodoro
     gnome-screenshot
     gnumeric
     go
@@ -77,6 +78,7 @@
     sops
     tmux
     tree
+    tty-clock
     v4l-utils
     vagrant
     vault
@@ -86,6 +88,7 @@
     wakatime
     wget
     wireplumber
+    wmctrl
     # wl-clipboard  # wayland
     xclip
     xsel
@@ -97,7 +100,6 @@
     xdg-utils
     yq
     zoxide
-
   ];
 
   # Firefox config

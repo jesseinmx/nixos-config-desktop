@@ -8,6 +8,10 @@ let
   };
 in
 {
+  imports = [
+    ./aliases.nix
+  ];
+
   home.username = "jesseinmx";
   home.homeDirectory = "/home/jesseinmx";
   home.stateVersion = "25.05";
@@ -265,7 +269,6 @@ in
       # Source custom scripts if they exist
       [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
       [ -f $HOME/.profile.d/bethel.sh ] && source $HOME/.profile.d/bethel.sh
-      [ -f ~/.aliases ] && . ~/.aliases
     '';
   };
 
