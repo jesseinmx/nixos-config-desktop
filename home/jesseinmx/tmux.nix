@@ -3,6 +3,7 @@
 {
   programs.tmux = {
     enable = true;
+    prefix = "C-b";
     shell = "${pkgs.bash}/bin/bash";
     mouse = true;
     terminal = "screen-25jcolor";
@@ -19,6 +20,9 @@
     extraConfig = ''
       set-option -sa terminal-overrides ",xterm*:Tc"
       set -g focus-events on
+
+      # middle-click to paste from system clipboard
+      bind-key -n MouseDown2Pane run "tmux set-buffer -b primary_selection \"$(xsel -o)\"; tmux paste-buffer -b primary_selection; tmux delete-buffer -b primary_selection"
 
       # name a pane after split
       bind-key c command-prompt -p "window name:" "new-window; rename-window '%%'"
