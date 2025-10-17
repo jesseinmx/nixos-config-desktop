@@ -81,6 +81,7 @@
     tmux
     tree
     tty-clock
+    uv
     v4l-utils
     vagrant
     vault
