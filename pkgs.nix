@@ -35,6 +35,7 @@
     easyeffects
     eza
     ffmpeg-full
+    file
     firefox
     flameshot
     freerdp
