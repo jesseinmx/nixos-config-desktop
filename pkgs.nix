@@ -63,11 +63,14 @@
     nerd-fonts.hack
     netbird
     nmap
+    nodejs
     nodePackages.aws-cdk
+    nodePackages.npm
     obs-studio
     packer
     pavucontrol
     pyenv
+    python3
     pipewire
     podman
     psmisc
@@ -88,7 +91,7 @@
     vault
     vim
     vlc
-    vscode-fhs
+    vscode
     wakatime
     wget
     wireplumber

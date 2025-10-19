@@ -69,7 +69,7 @@ in
       fi
       export GPG_TTY=$(tty)
       if type rg &> /dev/null; then
-          export FZF_DEFAULT_DEFAULT_COMMAND='rg --files --hidden --ignore-file ~/.gitignore'
+          export FZF_DEFAULT_COMMAND='rg --files --hidden --ignore-file ~/.gitignore'
       elif type ag &> /dev/null; then
           export FZF_DEFAULT_COMMAND='ag -p ~/.gitignore -g ""'
       fi
@@ -92,14 +92,32 @@ in
         fi
         local ans
         read -r -p "Apply changes now with nix-apply? [y/N] " ans || true
-        if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
+        if [[ "$ans" == [yY] ]]; then
           (cd ~/nixos-config-desktop && sudo nixos-rebuild switch --flake .)
         else
           echo "Skip applying changes."
         fi
       }
+      home_test() {
+        (cd ~/nixos-config-desktop && home-manager switch --flake . --dry-run)
+        local status=$?
+        if [ $status -ne 0 ]; then
+          return $status
+        fi
+        local ans
+        read -r -p "Apply changes now with home-apply? [y/N] " ans || true
+        if [[ "$ans" == [yY] ]]; then
+          (cd ~/nixos-config-desktop && home-manager switch --flake .)
+        else
+          echo "Skip applying changes."
+        fi
+      }
+
+      # This is a comment to separate the functions
       loadaws() {
-        . ~/git/load-up-iam.sh
+        if [ -f ~/git/load-up-iam.sh ]; then
+          . ~/git/load-up-iam.sh
+        fi
       }
       [ -f ~/.profile.local ] && . ~/.profile.local
     '';
