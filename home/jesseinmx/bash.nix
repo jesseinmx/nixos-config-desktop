@@ -136,4 +136,24 @@ in
     enable = true;
     enableBashIntegration = true;
   };
+
+  programs.ssh = {
+    enable = true;
+    matchBlocks = {
+      "github.com" = {
+        user = "git";
+        identityFile = "~/.ssh/jesseinmx-dev";
+      };
+      "10.1.1.*" = {
+        extraOptions = {
+          StrictHostKeyChecking = "no";
+        };
+      };
+      "192.168.88.*" = {
+        extraOptions = {
+          StrictHostKeyChecking = "no";
+        };
+      };
+    };
+  };
 }
