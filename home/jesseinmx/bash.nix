@@ -85,7 +85,7 @@ in
         wmctrl -r "Flynn's Browser" -e 0,-1,-1,1920,1080
       }
       nix_test() {
-        (cd ~/nixos-config-desktop && nixos-rebuild dry-build)
+        (cd ~/nixos-config-desktop && nixos-rebuild build --flake .#nixos)
         local status=$?
         if [ $status -ne 0 ]; then
           return $status

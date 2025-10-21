@@ -5,45 +5,43 @@
   # Keep icons/cursors available system-wide
   environment.pathsToLink = [ "/share/icons" "/share/cursors" ];
 
+  services.xserver.enable = true; # Enable the X server
+
   # =========================
   # GNOME Desktop Environment
   # =========================
   # Enabled by default. Disable if switching to another DE below.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
+  services.xserver.windowManager.i3.enable = true;
   # Disable Wayland session for GNOME if desired
   services.xserver.displayManager.gdm.wayland = false;
 
-  # GNOME packages and tools
+  # =========================
+  # i3 Window Manager
+  # =========================
+  # Enable LightDM as an alternative display manager for i3
+  services.xserver.displayManager.lightdm.enable = false;
+  # services.xserver.desktopManager.none.enable = true; # No specific desktop environment for i3
+
+  # GNOME and i3 packages and tools
   environment.systemPackages = with pkgs; [
+    # GNOME packages
     gnome-tweaks
-
-    # Cursor themes for GNOME/X11  # wayland
-    # adwaita-icon-theme
-    # afterglow-cursors-recolored
-    # bibata-cursors
-    # bibata-cursors-translucent # broken symlink
     xcursor-pro
-    # whitesur-cursors
-    # xorg.xcursorthemes
-
-    # Gnome Settings
     gnome-themes-extra
     gnome-settings-daemon
     gnome-shell
     gnome-control-center
-
-    # Additional cursor support
-    # hicolor-icon-theme
-
-    # Wayland-specific cursor packages  # wayland
-    # libsForQt5.breeze-qt5  # wayland
     gnome-backgrounds
-
-    # GNOME extensions
     gnomeExtensions.appindicator
 
-    # X11-specific packages
+    # i3 packages
+    i3status # i3 status bar
+    i3lock # i3 lock screen
+    dmenu # application launcher
+
+    # Common X11 utilities
     xorg.xev
     xorg.xrandr
     xorg.xset

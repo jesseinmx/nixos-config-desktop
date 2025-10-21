@@ -4,3 +4,7 @@ nix flake update
 
 # Rebuild this host
 sudo nixos-rebuild switch --flake .#nixos
+
+# Test the configuration
+nix eval .#nixos.config.system.stateVersion
+nixos-rebuild build --flake .#nixos
