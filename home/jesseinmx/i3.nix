@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 
 {
+  home.packages = [ pkgs.rofi ];
+
   xsession.windowManager.i3 = {
     enable = true;
 
@@ -76,6 +78,10 @@
       bindsym $mod+Shift+8 move container to workspace number 8
       bindsym $mod+Shift+9 move container to workspace number 9
       bindsym $mod+Shift+0 move container to workspace number 10
+
+      # switch to next/previous workspace
+      bindsym Control+Mod1+Left workspace prev
+      bindsym Control+Mod1+Right workspace next
     '';
   };
 }
