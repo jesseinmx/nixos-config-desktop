@@ -24,6 +24,7 @@
     bitwarden
     bitwarden-cli
     chezmoi
+    calibre
     cargo
     chromium
     cifs-utils
@@ -51,6 +52,9 @@
     granted
     home-manager
     htop
+    i3
+    i3lock
+    i3status
     inkscape
     jq
     kdePackages.kdenlive

@@ -98,7 +98,7 @@ in
           echo "Skip applying changes."
         fi
       }
-      home_test() {
+      hometest() {
         (cd ~/nixos-config-desktop && home-manager switch --flake . --dry-run)
         local status=$?
         if [ $status -ne 0 ]; then

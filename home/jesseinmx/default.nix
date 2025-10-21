@@ -10,6 +10,7 @@ in
 {
   imports = [
     ./bash.nix
+    ./i3.nix
     ./neovim.nix
     ./tmux.nix
     ./vscode.nix
