@@ -8,8 +8,9 @@
 
     extraConfig = ''
       # Set modifier key
-      set $mod Mod4
+      set $$mod Mod4
 
+      # Note: $ is used to escape the $ for Nix's string interpolation, allowing i3 to interpret it as $mod.
       # Launch terminal
       bindsym $mod+Return exec alacritty
 
@@ -17,67 +18,67 @@
       focus_follows_mouse yes
 
       # Launch menu
-      bindsym $mod+d exec rofi -show drun
+      bindsym $$mod+d exec rofi -show drun
 
       # Vim-like keybindings for navigation
-      bindsym $mod+h focus left
-      bindsym $mod+j focus down
-      bindsym $mod+k focus up
-      bindsym $mod+l focus right
+      bindsym $$mod+h focus left
+      bindsym $$mod+j focus down
+      bindsym $$mod+k focus up
+      bindsym $$mod+l focus right
 
       # Move focused window
-      bindsym $mod+Shift+h move left
-      bindsym $mod+Shift+j move down
-      bindsym $mod+Shift+k move up
-      bindsym $mod+Shift+l move right
+      bindsym $$mod+Shift+h move left
+      bindsym $$mod+Shift+j move down
+      bindsym $$mod+Shift+k move up
+      bindsym $$mod+Shift+l move right
 
       # Split orientation
-      bindsym $mod+v split v
-      bindsym $mod+s split h
+      bindsym $$mod+v split v
+      bindsym $$mod+s split h
 
       # Change container layout
-      bindsym $mod+e layout toggle split
-      bindsym $mod+w layout tabbed
-      bindsym $mod+t layout stacking
+      bindsym $$mod+e layout toggle split
+      bindsym $$mod+w layout tabbed
+      bindsym $$mod+t layout stacking
 
       # Fullscreen
-      bindsym $mod+f fullscreen toggle
+      bindsym $$mod+f fullscreen toggle
 
       # Toggle floating
-      bindsym $mod+Shift+space floating toggle
+      bindsym $$mod+Shift+space floating toggle
 
       # Kill focused window
-      bindsym $mod+q kill
+      bindsym $$mod+q kill
 
       # Reload, restart, exit
-      bindsym $mod+Shift+r restart
-      bindsym $mod+r reload
-      bindsym $mod+Shift+e exec i3-msg exit
+      bindsym $$mod+Shift+r restart
+      bindsym $$mod+r reload
+      bindsym $$mod+Shift+e exec i3-msg exit
 
       # Workspaces
       # switch to workspace
-      bindsym $mod+1 workspace number 1
-      bindsym $mod+2 workspace number 2
-      bindsym $mod+3 workspace number 3
-      bindsym $mod+4 workspace number 4
-      bindsym $mod+5 workspace number 5
-      bindsym $mod+6 workspace number 6
-      bindsym $mod+7 workspace number 7
-      bindsym $mod+8 workspace number 8
-      bindsym $mod+9 workspace number 9
-      bindsym $mod+0 workspace number 10
+      bindsym $$mod+1 workspace number 1
+      bindsym $$mod+2 workspace number 2
+      bindsym $$mod+3 workspace number 3
+      bindsym $$mod+4 workspace number 4
+      bindsym $$mod+5 workspace number 5
+      bindsym $$mod+6 workspace number 6
+      bindsym $$mod+7 workspace number 7
+      bindsym $$mod+8 workspace number 8
+      bindsym $$mod+9 workspace number 9
+      bindsym $$mod+0 workspace number 10
 
       # move focused container to workspace
-      bindsym $mod+Shift+1 move container to workspace number 1
-      bindsym $mod+Shift+2 move container to workspace number 2
-      bindsym $mod+Shift+3 move container to workspace number 3
-      bindsym $mod+Shift+4 move container to workspace number 4
-      bindsym $mod+Shift+5 move container to workspace number 5
-      bindsym $mod+Shift+6 move container to workspace number 6
-      bindsym $mod+Shift+7 move container to workspace number 7
-      bindsym $mod+Shift+8 move container to workspace number 8
-      bindsym $mod+Shift+9 move container to workspace number 9
-      bindsym $mod+Shift+0 move container to workspace number 10
+      bindsym $$mod+Shift+1 move container to workspace number 1
+      bindsym $$mod+Shift+2 move container to workspace number 2
+      bindsym $$mod+Shift+3 move container to workspace number 3
+      bindsym $$mod+Shift+4 move container to workspace number 4
+      bindsym $$mod+Shift+5 move container to workspace number 5
+      bindsym $$mod+Shift+6 move container to workspace number 6
+      bindsym $$mod+Shift+7 move container to workspace number 7
+      bindsym $$mod+Shift+8 move container to workspace number 8
+      bindsym $$mod+Shift+9 move container to workspace number 9
+      bindsym $$mod+Shift+0 move container to workspace number 10
 
       # switch to next/previous workspace
       bindsym Control+Mod1+Left workspace prev
