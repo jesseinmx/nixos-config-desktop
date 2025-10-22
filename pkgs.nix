@@ -13,6 +13,8 @@
 
   # General system packages
   environment.systemPackages = with pkgs; [
+
+    # wl-clipboard  # wayland
     abiword
     age
     aider-chat-with-browser
@@ -23,9 +25,9 @@
     bat
     bitwarden
     bitwarden-cli
-    chezmoi
     calibre
     cargo
+    chezmoi
     chromium
     cifs-utils
     codex
@@ -40,12 +42,11 @@
     firefox
     flameshot
     freerdp
+    fzf
     gemini-cli
     ghostty
     git
     git-open
-    gnome-pomodoro
-    gnome-screenshot
     gnumeric
     go
     google-chrome
@@ -67,17 +68,18 @@
     nerd-fonts.hack
     netbird
     nmap
-    nodejs
     nodePackages.aws-cdk
     nodePackages.npm
+    nodejs
     obs-studio
     packer
     pavucontrol
-    pyenv
-    python3
     pipewire
     podman
     psmisc
+    pulseaudio
+    pyenv
+    python3
     qutebrowser
     rclone
     remmina
@@ -100,17 +102,17 @@
     wget
     wireplumber
     wmctrl
-    # wl-clipboard  # wayland
     xclip
-    xsel
-    xorg.xev
-    xorg.xrandr
-    xorg.xset
-    xorg.xinput
     xdg-desktop-portal-gtk
     xdg-utils
+    xorg.xev
+    xorg.xinput
+    xorg.xrandr
+    xorg.xset
+    xsel
     yq
-    zoxide
+    zoxide # Provides 'z' command
+
   ];
 
   # Firefox config

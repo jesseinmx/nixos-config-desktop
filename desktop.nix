@@ -27,14 +27,23 @@
   # GNOME and i3 packages and tools
   environment.systemPackages = with pkgs; [
     # GNOME packages
-    gnome-tweaks
-    xcursor-pro
-    gnome-themes-extra
+
+    gnome-backgrounds
+    gnome-control-center
+    gnome-screenshot
     gnome-settings-daemon
     gnome-shell
-    gnome-control-center
-    gnome-backgrounds
+    gnome-themes-extra
+    gnome-tweaks
     gnomeExtensions.appindicator
+    gnomeExtensions.appindicator
+    gnomeExtensions.dash-to-dock
+    gnomeExtensions.easyeffects-preset-selector
+    gnomeExtensions.search-light
+    gnomeExtensions.tiling-shell
+    xcursor-pro
+    gnome-pomodoro
+    gnome-screenshot
 
     # i3 packages
     i3status # i3 status bar

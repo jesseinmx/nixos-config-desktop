@@ -10,82 +10,53 @@
       keybindings = {
         "Mod1+Return" = "nop";
         "$mod+Return" = "exec alacritty";
+        "XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
+        "XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
+        "XF86AudioMute" = "exec pactl set-source-mute @DEFAULT_SOURCE@ toggle";
+        "$mod+d" = "exec rofi -show drun";
+        "$mod+h" = "focus left";
+        "$mod+j" = "focus down";
+        "$mod+k" = "focus up";
+        "$mod+l" = "focus right";
+        "$mod+Shift+h" = "move left";
+        "$mod+Shift+j" = "move down";
+        "$mod+Shift+k" = "move up";
+        "$mod+Shift+l" = "move right";
+        "$mod+v" = "split v";
+        "$mod+s" = "split h";
+        "$mod+e" = "layout toggle split";
+        "$mod+w" = "layout tabbed";
+        "$mod+t" = "layout stacking";
+        "$mod+f" = "fullscreen toggle";
+        "$mod+Shift+space" = "floating toggle";
+        "$mod+q" = "kill";
+        "$mod+Shift+r" = "restart";
+        "$mod+r" = "reload";
+        "$mod+Shift+e" = "exec i3-msg exit";
+        "$mod+1" = "workspace number 1";
+        "$mod+2" = "workspace number 2";
+        "$mod+3" = "workspace number 3";
+        "$mod+4" = "workspace number 4";
+        "$mod+5" = "workspace number 5";
+        "$mod+6" = "workspace number 6";
+        "$mod+7" = "workspace number 7";
+        "$mod+8" = "workspace number 8";
+        "$mod+9" = "workspace number 9";
+        "$mod+0" = "workspace number 10";
+        "$mod+Shift+1" = "move container to workspace number 1";
+        "$mod+Shift+2" = "move container to workspace number 2";
+        "$mod+Shift+3" = "move container to workspace number 3";
+        "$mod+Shift+4" = "move container to workspace number 4";
+        "$mod+Shift+5" = "move container to workspace number 5";
+        "$mod+Shift+6" = "move container to workspace number 6";
+        "$mod+Shift+7" = "move container to workspace number 7";
+        "$mod+Shift+8" = "move container to workspace number 8";
+        "$mod+Shift+9" = "move container to workspace number 9";
+        "$mod+Shift+0" = "move container to workspace number 10";
+        "Control+Mod1+Left" = "workspace prev";
+        "Control+Mod1+Right" = "workspace next";
       };
     };
 
-    extraConfig = ''
-      # Set modifier key
-      set $mod Mod4
-
-      # Enable focus follows mouse
-      focus_follows_mouse yes
-
-      # Launch menu
-      bindsym $$mod+d exec rofi -show drun
-
-      # Vim-like keybindings for navigation
-      bindsym $$mod+h focus left
-      bindsym $$mod+j focus down
-      bindsym $$mod+k focus up
-      bindsym $$mod+l focus right
-
-      # Move focused window
-      bindsym $$mod+Shift+h move left
-      bindsym $$mod+Shift+j move down
-      bindsym $$mod+Shift+k move up
-      bindsym $$mod+Shift+l move right
-
-      # Split orientation
-      bindsym $$mod+v split v
-      bindsym $$mod+s split h
-
-      # Change container layout
-      bindsym $$mod+e layout toggle split
-      bindsym $$mod+w layout tabbed
-      bindsym $$mod+t layout stacking
-
-      # Fullscreen
-      bindsym $$mod+f fullscreen toggle
-
-      # Toggle floating
-      bindsym $$mod+Shift+space floating toggle
-
-      # Kill focused window
-      bindsym $$mod+q kill
-
-      # Reload, restart, exit
-      bindsym $$mod+Shift+r restart
-      bindsym $$mod+r reload
-      bindsym $$mod+Shift+e exec i3-msg exit
-
-      # Workspaces
-      # switch to workspace
-      bindsym $$mod+1 workspace number 1
-      bindsym $$mod+2 workspace number 2
-      bindsym $$mod+3 workspace number 3
-      bindsym $$mod+4 workspace number 4
-      bindsym $$mod+5 workspace number 5
-      bindsym $$mod+6 workspace number 6
-      bindsym $$mod+7 workspace number 7
-      bindsym $$mod+8 workspace number 8
-      bindsym $$mod+9 workspace number 9
-      bindsym $$mod+0 workspace number 10
-
-      # move focused container to workspace
-      bindsym $$mod+Shift+1 move container to workspace number 1
-      bindsym $$mod+Shift+2 move container to workspace number 2
-      bindsym $$mod+Shift+3 move container to workspace number 3
-      bindsym $$mod+Shift+4 move container to workspace number 4
-      bindsym $$mod+Shift+5 move container to workspace number 5
-      bindsym $$mod+Shift+6 move container to workspace number 6
-      bindsym $$mod+Shift+7 move container to workspace number 7
-      bindsym $$mod+Shift+8 move container to workspace number 8
-      bindsym $$mod+Shift+9 move container to workspace number 9
-      bindsym $$mod+Shift+0 move container to workspace number 10
-
-      # switch to next/previous workspace
-      bindsym Control+Mod1+Left workspace prev
-      bindsym Control+Mod1+Right workspace next
-    '';
-  };
+    };
 }

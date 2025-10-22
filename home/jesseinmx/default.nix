@@ -52,12 +52,10 @@ in
     pkgs.gnomeExtensions.appindicator
     pkgs.gnomeExtensions.search-light
     pkgs.gnomeExtensions.easyeffects-preset-selector
+    pkgs.gnomeExtensions.tiling-shell
     # pkgs.wl-clipboard  # for wl-copy  # wayland
     
     
-    pkgs.pyenv
-    pkgs.fzf
-    pkgs.zoxide # Provides 'z' command
     
     
     
