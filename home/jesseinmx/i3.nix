@@ -6,13 +6,16 @@
   xsession.windowManager.i3 = {
     enable = true;
 
+    config = {
+      keybindings = {
+        "Mod1+Return" = "nop";
+        "$mod+Return" = "exec alacritty";
+      };
+    };
+
     extraConfig = ''
       # Set modifier key
-      set $$mod Mod4
-
-      # Note: $ is used to escape the $ for Nix's string interpolation, allowing i3 to interpret it as $mod.
-      # Launch terminal
-      bindsym $mod+Return exec alacritty
+      set $mod Mod4
 
       # Enable focus follows mouse
       focus_follows_mouse yes
