@@ -6,7 +6,7 @@
     prefix = "C-b";
     shell = "${pkgs.bash}/bin/bash";
     mouse = true;
-    terminal = "screen-25jcolor";
+    terminal = "screen-256color";
     escapeTime = 10;
     keyMode = "vi";
     shortcut = "r"; # Use 'r' to reload tmux config
