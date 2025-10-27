@@ -50,6 +50,7 @@
     gnumeric
     go
     google-chrome
+    google-drive-ocamlfuse
     granted
     home-manager
     htop

@@ -144,6 +144,10 @@ in
   #     binding = "<Alt><Shift>4";
   #   };
 
+    "org/gnome/nautilus/preferences" = {
+      "always-use-location-entry" = true;
+    };
+
   };
 
   xdg.configFile."gtk-3.0/bookmarks" = {

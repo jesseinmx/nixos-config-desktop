@@ -30,20 +30,31 @@
 
     gnome-backgrounds
     gnome-control-center
+    gnome-pomodoro
     gnome-screenshot
     gnome-settings-daemon
     gnome-shell
+    gnomeExtensions.burn-my-windows
     gnome-themes-extra
     gnome-tweaks
-    gnomeExtensions.appindicator
+    gnomeExtensions.advanced-alttab-window-switcher
     gnomeExtensions.appindicator
     gnomeExtensions.dash-to-dock
+    gnomeExtensions.dash-to-panel
     gnomeExtensions.easyeffects-preset-selector
+    gnomeExtensions.forge
+    gnomeExtensions.pano
+    ignition #manage startup apps
+    exhibit #3d model viewer
+    vaults #encrypted file vault
+    gradia #app compress and convert
+    switcheroo #app compress and convert
+    curtail
+    gnomeExtensions.search-light
     gnomeExtensions.search-light
     gnomeExtensions.tiling-shell
+    gradience
     xcursor-pro
-    gnome-pomodoro
-    gnome-screenshot
 
     # i3 packages
     i3status # i3 status bar
@@ -58,6 +69,8 @@
     xclip
     xsel
   ];
+
+  
 
   # =========================
   # XFCE Desktop Environment
