@@ -133,6 +133,10 @@
 
   services.flatpak.enable = true;
 
+  services.flatpak.packages = [
+    "pro.vpup.vpuppr"
+  ];
+
   services.printing = {
     enable = true;
     drivers = [pkgs.brlaser ];

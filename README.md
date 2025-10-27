@@ -5,9 +5,12 @@ nix flake update
 # Rebuild this host
 sudo nixos-rebuild switch --flake .#nixos
 
-# Test the configuration
-nix eval .#nixos.config.system.stateVersion
+# Test the NixOS configuration
+# When you ask to test, please specify if you want to test NixOS or Home Manager.
+nix eval .#nixosConfigurations.nixos.config.system.stateVersion
 nixos-rebuild build --flake .#nixos
+
+# Test the Home Manager configuration
 home-manager switch --flake . --dry-run
 
 # Apply the home-manager configuration
