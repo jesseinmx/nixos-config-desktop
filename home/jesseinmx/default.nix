@@ -20,6 +20,8 @@ in
   home.homeDirectory = "/home/jesseinmx";
   home.stateVersion = "25.05";
 
+  
+
   home.sessionVariables = {
     XCURSOR_SIZE = "28";
     # Force X11 for applications that might default to Wayland
@@ -203,5 +205,9 @@ in
       };
     };
   };
+
+  
+
+  
 
   }

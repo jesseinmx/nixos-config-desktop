@@ -39,6 +39,7 @@
     gnome-tweaks
     gnomeExtensions.advanced-alttab-window-switcher
     gnomeExtensions.appindicator
+    gnomeExtensions.auto-move-windows
     gnomeExtensions.dash-to-dock
     gnomeExtensions.dash-to-panel
     gnomeExtensions.easyeffects-preset-selector

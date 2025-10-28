@@ -59,6 +59,7 @@
     i3status
     inkscape
     jq
+    k9s
     kdePackages.kdenlive
     kitty
     kubectl
@@ -113,7 +114,7 @@
     xorg.xrandr
     xorg.xset
     xsel
-    yq
+    yq-go
     zoxide # Provides 'z' command
 
   ];
