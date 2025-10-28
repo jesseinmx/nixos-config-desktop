@@ -77,6 +77,8 @@
     pavucontrol
     pipewire
     podman
+    # proton-ge-bin
+    protonup
     psmisc
     pulseaudio
     pyenv
@@ -135,7 +137,18 @@
 
   services.flatpak.packages = [
     "pro.vpup.vpuppr"
+    "net.lutris.Lutris"
+    "com.usebottles.bottles"
   ];
+
+  programs.steam.enable = true;
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+    ];
+  };
 
   services.printing = {
     enable = true;

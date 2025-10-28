@@ -53,6 +53,7 @@ in
     pkgs.gnomeExtensions.search-light
     pkgs.gnomeExtensions.easyeffects-preset-selector
     pkgs.gnomeExtensions.tiling-shell
+    pkgs.flatseal
     # pkgs.wl-clipboard  # for wl-copy  # wayland
     
     
