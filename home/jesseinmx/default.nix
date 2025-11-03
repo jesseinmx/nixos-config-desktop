@@ -49,13 +49,14 @@ in
 
   # ===== GNOME Dash-to-Dock (Auto-hide) — PACKAGES (START) =====
   home.packages = [
-    pkgs.gnomeExtensions.dash-to-dock
+    pkgs.flatseal
     pkgs.gnome-screenshot
     pkgs.gnomeExtensions.appindicator
-    pkgs.gnomeExtensions.search-light
+    pkgs.gnomeExtensions.dash-to-dock
     pkgs.gnomeExtensions.easyeffects-preset-selector
+    pkgs.gnomeExtensions.search-light
     pkgs.gnomeExtensions.tiling-shell
-    pkgs.flatseal
+    pkgs.gnomeExtensions.x11-gestures
     # pkgs.wl-clipboard  # for wl-copy  # wayland
     
     

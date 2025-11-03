@@ -74,6 +74,7 @@
     nodePackages.npm
     nodejs
     obs-studio
+    obsidian
     packer
     pavucontrol
     pipewire
