@@ -10,6 +10,7 @@ in
 {
   imports = [
     ./bash.nix
+    ./ghostty.nix
     ./i3.nix
     ./neovim.nix
     ./tmux.nix
@@ -49,7 +50,6 @@ in
 
   # ===== GNOME Dash-to-Dock (Auto-hide) — PACKAGES (START) =====
   home.packages = [
-    pkgs.flatseal
     pkgs.gnome-screenshot
     pkgs.gnomeExtensions.appindicator
     pkgs.gnomeExtensions.dash-to-dock
@@ -58,11 +58,6 @@ in
     pkgs.gnomeExtensions.tiling-shell
     pkgs.gnomeExtensions.x11-gestures
     # pkgs.wl-clipboard  # for wl-copy  # wayland
-    
-    
-    
-    
-    
   ];
   # ===== GNOME Dash-to-Dock (Auto-hide) — PACKAGES (END) =====
 
@@ -98,6 +93,7 @@ in
         "virtualbox.desktop"
         "Alacritty.desktop"
         "kitty.desktop"
+        "ghostty.desktop"
       ];
     };
     "org/gnome/shell/extensions/dash-to-dock" = {
