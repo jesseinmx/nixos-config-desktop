@@ -4,7 +4,7 @@
   programs.ghostty = {
     enable = true;
     settings = {
-      background-opacity = 0.5;
+      background-opacity = 0.90;
     };
   };
 }

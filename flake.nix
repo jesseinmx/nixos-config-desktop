@@ -16,7 +16,7 @@
     # 1. NIXOS CONFIGURATION (SYSTEM-ONLY)
     #    Build with: sudo nixos-rebuild switch --flake .#nixos
     nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
+      JesseBot = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit inputs; }; # Pass flake inputs to modules
         modules = [

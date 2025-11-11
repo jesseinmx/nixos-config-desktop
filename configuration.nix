@@ -23,8 +23,22 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Video loopback for virtual camera (OBS)
+  boot.extraModulePackages = [ pkgs.linuxPackages.v4l2loopback ];
+  boot.kernelModules = [ "v4l2loopback" ];
+  boot.extraModprobeConfig = ''
+    options v4l2loopback devices=1 exclusive_caps=1 card_label="OBS Virtual Camera"
+  '';
+
+  swapDevices = [
+    {
+      device = "/swapfile";
+      size = 16384;
+    }
+  ];
+
   # Networking
-  networking.hostName = "nixos";
+  networking.hostName = "JesseBot";
   networking.networkmanager.enable = true;
 
   # Locale & time

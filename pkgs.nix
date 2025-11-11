@@ -57,6 +57,7 @@
     google-chrome
     google-drive-ocamlfuse
     granted
+    kubernetes-helm
     home-manager
     htop
     i3
@@ -68,6 +69,7 @@
     kdePackages.kdenlive
     kitty
     kubectl
+    kustomize_4
     lazydocker
     lazygit
     neovim

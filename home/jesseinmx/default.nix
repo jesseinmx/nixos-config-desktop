@@ -11,6 +11,7 @@ in
   imports = [
     ./bash.nix
     ./ghostty.nix
+    ./gdrive.nix
     ./i3.nix
     ./neovim.nix
     ./tmux.nix
@@ -154,14 +155,18 @@ in
     text = ''
       file://${config.home.homeDirectory}/ Home
       file://${config.home.homeDirectory}/Downloads Downloads
-      file://${config.home.homeDirectory}/git git
-      file://${config.home.homeDirectory}/Insync Insync
-      file://${config.home.homeDirectory}/Desktop Desktop
-      file://${config.home.homeDirectory}/Pictures Pictures
-      file://${config.home.homeDirectory}/Videos Videos
       file://${config.home.homeDirectory}/Documents Documents
-      file://${config.home.homeDirectory}/nixos-config-desktop nixos-config
-      file://${config.home.homeDirectory}/vagrant vagrant
+      file://${config.home.homeDirectory}/Pictures Pictures
+      file://${config.home.homeDirectory}/Desktop Desktop
+      file://${config.home.homeDirectory}/Videos Videos
+      file://${config.home.homeDirectory}/Videos/obs-raw obs-raw
+      file://${config.home.homeDirectory}/Documents/flynn/video Flynn-Video
+      file://${config.home.homeDirectory}/Documents/flynn/docs Flynn-Docs
+      file://${config.home.homeDirectory}/Documents/flynn/graphics Flynn-Graphics
+      file://${config.home.homeDirectory}/git git
+      file://${config.home.homeDirectory}/gdrive-flynn G-Flynn
+      file://${config.home.homeDirectory}/gdrive-jesseinmx G-JesseInMX
+      file://${config.home.homeDirectory}/gdrive-mcallister G-Mcallister
     '';
   };
 

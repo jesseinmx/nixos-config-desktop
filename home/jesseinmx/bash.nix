@@ -99,7 +99,7 @@ in
         fi
       }
       hometest() {
-        (cd ~/nixos-config-desktop && home-manager switch --flake . --dry-run)
+        (cd ~/nixos-config-desktop && home-manager switch --flake . --dry-run -b backup)
         local status=$?
         if [ $status -ne 0 ]; then
           return $status
@@ -107,7 +107,7 @@ in
         local ans
         read -r -p "Apply changes now with home-apply? [y/N] " ans || true
         if [[ "$ans" == [yY] ]]; then
-          (cd ~/nixos-config-desktop && home-manager switch --flake .)
+          (cd ~/nixos-config-desktop && home-manager switch --flake . -b backup)
         else
           echo "Skip applying changes."
         fi
