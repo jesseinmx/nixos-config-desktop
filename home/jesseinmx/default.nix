@@ -160,9 +160,9 @@ in
       file://${config.home.homeDirectory}/Desktop Desktop
       file://${config.home.homeDirectory}/Videos Videos
       file://${config.home.homeDirectory}/Videos/obs-raw obs-raw
-      file://${config.home.homeDirectory}/Documents/flynn/video Flynn-Video
-      file://${config.home.homeDirectory}/Documents/flynn/docs Flynn-Docs
-      file://${config.home.homeDirectory}/Documents/flynn/graphics Flynn-Graphics
+      file://${config.home.homeDirectory}/flynn/video Flynn-Video
+      file://${config.home.homeDirectory}/flynn/docs Flynn-Docs
+      file://${config.home.homeDirectory}/flynn/graphics Flynn-Graphics
       file://${config.home.homeDirectory}/git git
       file://${config.home.homeDirectory}/gdrive-flynn G-Flynn
       file://${config.home.homeDirectory}/gdrive-jesseinmx G-JesseInMX

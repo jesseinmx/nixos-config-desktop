@@ -14,9 +14,9 @@
     pkgs = nixpkgs.legacyPackages.${system};
   in {
     # 1. NIXOS CONFIGURATION (SYSTEM-ONLY)
-    #    Build with: sudo nixos-rebuild switch --flake .#nixos
+    #    Build with: sudo nixos-rebuild switch --flake .#JessBot
     nixosConfigurations = {
-      JesseBot = nixpkgs.lib.nixosSystem {
+      JessBot = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit inputs; }; # Pass flake inputs to modules
         modules = [

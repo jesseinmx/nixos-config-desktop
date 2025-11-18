@@ -48,7 +48,7 @@ in
       xfreerdp = "xfreerdp /dynamic-resolution ";
       tree = "tree -a";
       nixtest = "nix_test";
-      nixapply = "(cd ~/nixos-config-desktop && sudo nixos-rebuild switch --flake .)";
+      nixapply = "(cd ~/nixos-config-desktop && sudo nixos-rebuild switch --flake .#JessBot)";
       orcaup = "docker compose --file ~/git/jesseinmx/orcaslicer/docker-compose.yaml up -d";
       orcadown = "docker compose --file ~/git/jesseinmx/orcaslicer/docker-compose.yaml down";
       "keepalive-bluetooth" = "(ffplay -nodisp -autoexit -loop 0 -volume 0 ~/silent.wav &> /dev/null &)";
@@ -85,7 +85,7 @@ in
         wmctrl -r "Flynn's Browser" -e 0,-1,-1,1920,1080
       }
       nix_test() {
-        (cd ~/nixos-config-desktop && nixos-rebuild build --flake .#nixos)
+        (cd ~/nixos-config-desktop && nixos-rebuild build --flake .#JessBot)
         local status=$?
         if [ $status -ne 0 ]; then
           return $status
@@ -93,7 +93,7 @@ in
         local ans
         read -r -p "Apply changes now with nix-apply? [y/N] " ans || true
         if [[ "$ans" == [yY] ]]; then
-          (cd ~/nixos-config-desktop && sudo nixos-rebuild switch --flake .)
+          (cd ~/nixos-config-desktop && sudo nixos-rebuild switch --flake .#JessBot)
         else
           echo "Skip applying changes."
         fi

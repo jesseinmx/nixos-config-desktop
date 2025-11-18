@@ -38,7 +38,7 @@
   ];
 
   # Networking
-  networking.hostName = "JesseBot";
+  networking.hostName = "JessBot";
   networking.networkmanager.enable = true;
 
   # Locale & time

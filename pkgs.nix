@@ -37,12 +37,14 @@
     codex
     copyq
     curl
+    deluge
     dig
     docker
     duplicacy
     easyeffects
     eza
     ffmpeg-full
+    figlet
     file
     firefox
     flameshot
@@ -68,10 +70,13 @@
     k9s
     kdePackages.kdenlive
     kitty
+    kopia
+    kopia-ui
     kubectl
     kustomize_4
     lazydocker
     lazygit
+    logseq
     neovim
     nerd-fonts.droid-sans-mono
     nerd-fonts.hack
@@ -112,6 +117,7 @@
     qutebrowser
     rclone
     remmina
+    restic
     ripgrep
     rpi-imager
     shotcut
