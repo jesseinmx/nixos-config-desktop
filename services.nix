@@ -61,9 +61,8 @@
   # services.displayManager.autoLogin.enable = true;
   # services.displayManager.autoLogin.user = "jesseinmx";
 
-  # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
-  systemd.services."getty@tty1".enable = false;
-  systemd.services."autovt@tty1".enable = false;
+  # Workaround for GNOME autologin moved to ./modules/gnome.nix
+  # See: ./modules/gnome.nix for GNOME-specific systemd tweaks
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;

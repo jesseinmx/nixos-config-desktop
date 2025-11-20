@@ -7,15 +7,9 @@
 
   services.xserver.enable = true; # Enable the X server
 
-  # =========================
-  # GNOME Desktop Environment
-  # =========================
-  # Enabled by default. Disable if switching to another DE below.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  # GNOME configuration has been moved to ./modules/gnome.nix
+  # Keep i3 Window Manager enabled here
   services.xserver.windowManager.i3.enable = true;
-  # Disable Wayland session for GNOME if desired
-  services.xserver.displayManager.gdm.wayland = false;
 
   # =========================
   # i3 Window Manager
@@ -26,42 +20,10 @@
 
   # GNOME and i3 packages and tools
   environment.systemPackages = with pkgs; [
-    # GNOME packages
-
-    curtail
-    exhibit #3d model viewer
-    gnome-backgrounds
-    gnome-control-center
-    gnome-pomodoro
-    gnome-screenshot
-    gnome-settings-daemon
-    gnome-shell
-    gnome-themes-extra
-    gnome-tweaks
-    gnomeExtensions.advanced-alttab-window-switcher
-    gnomeExtensions.appindicator
-    gnomeExtensions.astra-monitor
-    gnomeExtensions.auto-move-windows
-    gnomeExtensions.burn-my-windows
-    gnomeExtensions.dash-to-dock
-    gnomeExtensions.dash-to-panel
-    gnomeExtensions.easyeffects-preset-selector
-    gnomeExtensions.forge
-    gnomeExtensions.pano
-    gnomeExtensions.search-light
-    gnomeExtensions.search-light
-    gnomeExtensions.tiling-shell
-    gradia #app compress and convert
-    gradience
-    ignition #manage startup apps
-    switcheroo #app compress and convert
-    vaults #encrypted file vault
-    xcursor-pro
-
     # i3 packages
-    i3status # i3 status bar
-    i3lock # i3 lock screen
-    dmenu # application launcher
+    i3status
+    i3lock
+    dmenu
 
     # Common X11 utilities
     xorg.xev

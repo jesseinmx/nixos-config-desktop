@@ -1,0 +1,32 @@
+{ pkgs }:
+with pkgs;
+[
+  curtail
+  exhibit
+  gnome-backgrounds
+  gnome-control-center
+  gnome-pomodoro
+  gnome-screenshot
+  gnome-settings-daemon
+  gnome-shell
+  gnome-themes-extra
+  gnome-tweaks
+  gnomeExtensions.advanced-alttab-window-switcher
+  gnomeExtensions.appindicator
+  gnomeExtensions.astra-monitor
+  gnomeExtensions.auto-move-windows
+  gnomeExtensions.burn-my-windows
+  gnomeExtensions.dash-to-dock
+  gnomeExtensions.dash-to-panel
+  gnomeExtensions.easyeffects-preset-selector
+  gnomeExtensions.forge
+  gnomeExtensions.pano
+  gnomeExtensions.search-light
+  gnomeExtensions.tiling-shell
+  gradia
+  gradience
+  ignition
+  switcheroo
+  vaults
+  xcursor-pro
+]

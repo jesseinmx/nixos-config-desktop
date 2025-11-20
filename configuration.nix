@@ -7,6 +7,7 @@
     ./hardware-configuration.nix
     ./pkgs.nix
     ./virtualbox.nix
+    ./modules/gnome.nix
     # ./vagrant.nix
     ./desktop.nix
     ./firewall.nix
