@@ -1,9 +1,10 @@
 { config, pkgs,... }:
 
 {
-
+ 
   xfconf.settings = {
     "xfce4-keyboard-shortcuts" = {
+      
       # This ensures custom commands take precedence
       "commands/custom/override" = true;
       "xfwm4/custom/override" = true;
@@ -29,11 +30,13 @@
       # Workspaces navigation — see [`home/jesseinmx/keybindings.md`](home/jesseinmx/keybindings.md:41)
       "xfwm4/custom/<Ctrl><Alt>Right" = "right_workspace_key";
       "xfwm4/custom/<Ctrl><Alt>Left" = "left_workspace_key";
-      # alternate method:
-        #"xfwm4/custom/<Ctrl><Alt>Right" = null;
-        #"xfwm4/custom/<Ctrl><Alt>Left" = null;
-        #"commands/custom/<Ctrl><Alt>Right" = "xdotool set_desktop --relative 1";
-        #"commands/custom/<Ctrl><Alt>Left" = "xdotool set_desktop --relative -1";   
+    
     };
+
+    "xfwm4" = {
+      "general/focus_mode" = "sloppy";
+      "general/auto_raise" = false;
+    };
+    
   };
 }
