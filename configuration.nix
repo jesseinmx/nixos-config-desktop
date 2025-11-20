@@ -11,6 +11,7 @@
     ./desktop.nix
     ./firewall.nix
     ./services.nix
+    # ./ipad.nix
   ];
 
   # Enable flakes + new CLI (safe to leave even if already set)
