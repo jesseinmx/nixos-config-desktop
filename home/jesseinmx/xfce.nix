@@ -1,8 +1,39 @@
-{ config, pkgs, ... }:
+{ config, pkgs,... }:
 
-let
-  # Reserved for future variables (e.g. pactl, flameshot)
-in
 {
-  
+
+  xfconf.settings = {
+    "xfce4-keyboard-shortcuts" = {
+      # This ensures custom commands take precedence
+      "commands/custom/override" = true;
+      "xfwm4/custom/override" = true;
+      
+      # Optional: Neutralizing a potential conflicts
+      "xfwm4/custom/<Super>d" = null;
+      "xfwm4/custom/<Super>space" = null;
+      "xfwm4/default/<Primary><Alt>Right" = null;
+      
+      # New stable binding: Map Super + Space to the Whisker Menu
+      "commands/custom/<Super>space" = "xfce4-popup-whiskermenu";
+
+      # Screenshots (flameshot) — see [`home/jesseinmx/kybd_shortcuts.md`](home/jesseinmx/kybd_shortcuts.md:7)
+      "commands/custom/<Alt><Shift>exclam" = "flameshot gui -p ${config.home.homeDirectory}/screenshots -c";
+      "commands/custom/<Alt><Shift>at" = "flameshot screen -p ${config.home.homeDirectory}/screenshots -c";
+      "commands/custom/<Alt><Shift>numbersign" = "flameshot full -p ${config.home.homeDirectory}/screenshots -c";
+
+      # # Media keys
+      "commands/custom/XF86AudioRaiseVolume" = "pactl set-sink-volume @DEFAULT_SINK@ +5%";
+      "commands/custom/XF86AudioLowerVolume" = "pactl set-sink-volume @DEFAULT_SINK@ -5%";
+      "commands/custom/XF86AudioMute" = "pactl set-sink-mute @DEFAULT_SINK@ toggle";
+ 
+      # Workspaces navigation — see [`home/jesseinmx/keybindings.md`](home/jesseinmx/keybindings.md:41)
+      "xfwm4/custom/<Ctrl><Alt>Right" = "right_workspace_key";
+      "xfwm4/custom/<Ctrl><Alt>Left" = "left_workspace_key";
+      # alternate method:
+        #"xfwm4/custom/<Ctrl><Alt>Right" = null;
+        #"xfwm4/custom/<Ctrl><Alt>Left" = null;
+        #"commands/custom/<Ctrl><Alt>Right" = "xdotool set_desktop --relative 1";
+        #"commands/custom/<Ctrl><Alt>Left" = "xdotool set_desktop --relative -1";   
+    };
+  };
 }
