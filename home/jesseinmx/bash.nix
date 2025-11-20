@@ -100,7 +100,16 @@ in
         fi
       }
       hometest() {
-        (cd ~/nixos-config-desktop && home-manager switch --flake . --dry-run -b backup)
+        # Use a backup extension that we manage and ensure it can be overwritten.
+        local backup_ext="bak"
+        local target="$HOME/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml"
+ 
+        # Remove any existing backup with our chosen extension so Home Manager won't refuse
+        if [ -f "$target.$backup_ext" ]; then
+          rm -f "$target.$backup_ext"
+        fi
+ 
+        (cd ~/nixos-config-desktop && home-manager switch --flake . --dry-run -b "$backup_ext")
         local status=$?
         if [ $status -ne 0 ]; then
           return $status
@@ -108,7 +117,11 @@ in
         local ans
         read -r -p "Apply changes now with home-apply? [y/N] " ans || true
         if [[ "$ans" == [yY] ]]; then
-          (cd ~/nixos-config-desktop && home-manager switch --flake . -b backup)
+          # Ensure the backup path is clear before attempting to back up/overwrite
+          if [ -f "$target.$backup_ext" ]; then
+            rm -f "$target.$backup_ext"
+          fi
+          (cd ~/nixos-config-desktop && home-manager switch --flake . -b "$backup_ext")
         else
           echo "Skip applying changes."
         fi
