@@ -54,6 +54,7 @@ in
       "keepalive-bluetooth" = "(ffplay -nodisp -autoexit -loop 0 -volume 0 ~/silent.wav &> /dev/null &)";
       "bluetooth-keepalive" = "keepalive-bluetooth";
       "jwstream-sync" = "rclone sync -P jwstream:/jperry-renders ~/Videos/jwstream/";
+      docker-killall = "docker kill $(docker ps -q)";
       assume = ". assume";
     };
 

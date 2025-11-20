@@ -6,13 +6,14 @@
   imports = [
     ./hardware-configuration.nix
     ./pkgs.nix
-    ./virtualbox.nix
+    ./modules/virtualbox.nix
     ./modules/gnome.nix
-    # ./vagrant.nix
-    ./desktop.nix
-    ./firewall.nix
-    ./services.nix
-    # ./ipad.nix
+    ./modules/i3.nix
+    ./modules/xfce.nix
+    ./modules/vagrant.nix
+    ./modules/firewall.nix
+    ./modules/services.nix
+    ./modules/ipad.nix
   ];
 
   # Enable flakes + new CLI (safe to leave even if already set)
