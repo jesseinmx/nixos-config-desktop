@@ -79,7 +79,10 @@ in
   };
   # --- END: systemd user service for ffplay ---
 
-  
+  services.easyeffects = {
+    enable = true;
+    preset = "NoisReduction"; # optional
+  };
 
   programs.ssh = {
     enable = true;

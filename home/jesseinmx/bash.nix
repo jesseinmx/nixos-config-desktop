@@ -133,6 +133,28 @@ in
           . ~/git/load-up-iam.sh
         fi
       }
+
+      transcode() {
+        if [ -z "$1" ]; then
+          echo "Usage: transcode <input-file>"
+          return 1
+        fi
+        local in="$1"
+        if [ ! -f "$in" ]; then
+          echo "Input file not found: $in"
+          return 1
+        fi
+        local dir
+        dir="$(dirname -- "$in")"
+        local file
+        file="$(basename -- "$in")"
+        local name="''${file%.*}"
+        local out="''${dir}/''${name}-transcoded.mp4"
+        ffmpeg -i "$in" -c:v libx264 -preset veryfast -crf 18 -c:a aac -b:a 192k "$out" || return $?
+        scp -p "$out" "root@10.1.1.73:/opt/docker/jellyfin/data/media2/JW/" || return $?
+        echo "Transcoded and uploaded: $out -> root@10.1.1.73:/opt/docker/jellyfin/data/media2/JW/"
+      }
+
       [ -f ~/.profile.local ] && . ~/.profile.local
     '';
   };

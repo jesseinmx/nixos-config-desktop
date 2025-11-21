@@ -30,12 +30,16 @@
       # Workspaces navigation — see [`home/jesseinmx/keybindings.md`](home/jesseinmx/keybindings.md:41)
       "xfwm4/custom/<Ctrl><Alt>Right" = "right_workspace_key";
       "xfwm4/custom/<Ctrl><Alt>Left" = "left_workspace_key";
+      
+        # show all windows
+      "commands/custom/<Ctrl><Alt>Up" = "xfdesktop --windowlist";
     
     };
 
     "xfwm4" = {
       "general/focus_mode" = "sloppy";
       "general/auto_raise" = false;
+      "general/raise_with_viewports" = 1;
     };
     
   };
