@@ -1,5 +1,5 @@
 # configuration.nix
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, inputs, ... }:
 
 {
   # Keep ALL imports centralized here
@@ -14,6 +14,7 @@
     ./modules/firewall.nix
     ./modules/services.nix
     ./modules/ipad.nix
+    ./modules/x2go.nix
   ];
 
   # Enable flakes + new CLI (safe to leave even if already set)

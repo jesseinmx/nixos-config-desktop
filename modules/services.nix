@@ -68,4 +68,9 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+  services.openssh.openFirewall = true;
+
+  # X2Go server
+  services.x2goserver.enable = true;
+  
 }
