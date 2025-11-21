@@ -31,8 +31,9 @@
       "xfwm4/custom/<Ctrl><Alt>Right" = "right_workspace_key";
       "xfwm4/custom/<Ctrl><Alt>Left" = "left_workspace_key";
       
-        # show all windows
+      # Window Management
       "commands/custom/<Ctrl><Alt>Up" = "xfdesktop --windowlist";
+      "xfwm4/custom/<Alt>F4" = "close_window_key";
     
     };
 
