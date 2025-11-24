@@ -7,6 +7,10 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    antigravity-nix = {
+      url = "github:jacopone/antigravity-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, nix-flatpak, ... }@inputs: # <-- Note the @inputs

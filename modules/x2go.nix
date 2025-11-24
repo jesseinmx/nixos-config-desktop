@@ -26,7 +26,13 @@ in
     # Install X2Go server component and X11 auth helper
     environment.systemPackages = with pkgs; [ x2goserver xorg.xauth ];
 
-    # Ensure SSH port is open for X2Go transport
-    services.openssh.openFirewall = lib.mkDefault true;
+#    # Ensure SSH port is open for X2Go transport
+#    services.openssh.openFirewall = lib.mkDefault true;
+#    services.openssh.extraConfig = ''
+#      # RECOMMENDED MODERN MAC ALGORITHMS FOR X2GO COMPATIBILITY:
+#      Macs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,umac-128@openssh.com
+#      # Ensure modern KexAlgorithms are also present for best security:
+#      KexAlgorithms curve25519-sha256@libssh.org,ecdh-sha2-nistp521,ecdh-sha2-nistp384,ecdh-sha2-nistp256,diffie-hellman-group-exchange-sha256
+#    '';
   };
 }

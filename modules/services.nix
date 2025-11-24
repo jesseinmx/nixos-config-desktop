@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   # Keep icons/cursors available system-wide (moved from [`desktop.nix`](desktop.nix:1))
@@ -67,8 +67,27 @@
   # See: ./modules/gnome.nix for GNOME-specific systemd tweaks
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-  services.openssh.openFirewall = true;
+  services.openssh = {
+    enable = true;
+    openFirewall = true;
+    
+    # Use the 'settings' block with the new type (list of strings)
+    settings = {
+      # This setting replaces the default list entirely.
+      Macs = [
+        "hmac-sha2-512-etm@openssh.com"
+        "hmac-sha2-256-etm@openssh.com"
+        "umac-128-etm@openssh.com"
+        "hmac-sha2-512"
+        "hmac-sha2-256"
+        "umac-128@openssh.com"
+        "hmac-sha1-etm@openssh.com"
+        "hmac-sha1"
+        "hmac-md5-etm@openssh.com"
+        "hmac-md5"
+      ];
+    };
+  };
 
   # X2Go server
   services.x2goserver.enable = true;

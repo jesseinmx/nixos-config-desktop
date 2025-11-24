@@ -32,6 +32,7 @@
       "xfwm4/custom/<Ctrl><Alt>Left" = "left_workspace_key";
       
       # Window Management
+      "commands/custom/<Super>e" = "thunar";
       "commands/custom/<Ctrl><Alt>Up" = "xfdesktop --windowlist";
       "xfwm4/custom/<Alt>F4" = "close_window_key";
     

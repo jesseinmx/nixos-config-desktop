@@ -7,12 +7,13 @@
     ./hardware-configuration.nix
     ./pkgs.nix
     ./modules/virtualbox.nix
-    ./modules/gnome.nix
-    ./modules/i3.nix
+    # ./modules/gnome.nix
+    # ./modules/i3.nix
     ./modules/xfce.nix
     ./modules/vagrant.nix
     ./modules/firewall.nix
     ./modules/services.nix
+    ./modules/bluetooth.nix
     ./modules/ipad.nix
     ./modules/x2go.nix
   ];
@@ -44,6 +45,11 @@
   # Networking
   networking.hostName = "JessBot";
   networking.networkmanager.enable = true;
+
+  # Fonts
+  fonts.packages = with pkgs; [
+    nerd-fonts.hack
+  ];
 
   # Locale & time
   time.timeZone = "America/Mexico_City";
