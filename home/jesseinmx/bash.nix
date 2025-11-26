@@ -59,7 +59,6 @@ in
     };
 
     initExtra = ''
-      eval "$(zoxide init bash --cmd cd)"
       export BMA_HOME="${bash-my-aws}"
       export PATH="$PATH:$BMA_HOME/bin"
       source "$BMA_HOME/aliases"
@@ -157,6 +156,7 @@ in
       }
 
       [ -f ~/.profile.local ] && . ~/.profile.local
+      eval "$(zoxide init bash --cmd cd)"
     '';
   };
 

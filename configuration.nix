@@ -16,6 +16,7 @@
     ./modules/bluetooth.nix
     ./modules/ipad.nix
     ./modules/x2go.nix
+    ./modules/syncthing.nix
   ];
 
   # Enable flakes + new CLI (safe to leave even if already set)
@@ -61,6 +62,8 @@
     description = "Jesse";
     extraGroups = [ "networkmanager" "wheel" "docker" "video" "render" ];
   };
+
+  jesse.services.syncthing.enable = true;
 
   # Home Manager config is handled in flake.nix
 

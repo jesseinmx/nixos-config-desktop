@@ -14,6 +14,7 @@
       }
     ]);
     profiles.default.userSettings = {
+      "secretStorage.use" = false;
       "editor.fontFamily" = "Hack Nerd Font";
       "editor.minimap.enabled" = false;
       "roo-cline.allowedCommands" = [
