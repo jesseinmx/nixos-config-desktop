@@ -66,6 +66,9 @@
   # Workaround for GNOME autologin moved to ./modules/gnome.nix
   # See: ./modules/gnome.nix for GNOME-specific systemd tweaks
 
+  # gnome-keyring is a standard for libsecret used by vscode
+  services.gnome.gnome-keyring.enable = true;
+
   # Enable the OpenSSH daemon.
   services.openssh = {
     enable = true;

@@ -20,11 +20,13 @@
     # obs-studio-plugins.obs-pixel-art
     # proton-ge-bin
     # wl-clipboard  # wayland
+    p7zip
     abiword
     age
     aider-chat-with-browser
     alacritty
     appimage-run
+    audacity
     inputs.antigravity-nix.packages.${pkgs.system}.default
     arp-scan
     awscli
@@ -53,6 +55,7 @@
     freerdp
     fzf
     gemini-cli
+    gettext
     ghostty
     git
     git-open
@@ -106,6 +109,7 @@
     obs-studio-plugins.waveform #obs
     obsidian
     packer
+    pandoc
     pavucontrol
     pipewire
     podman
@@ -125,6 +129,7 @@
     shotcut
     signal-desktop
     sops
+    texliveBasic
     tmux
     tree
     tty-clock
@@ -139,6 +144,7 @@
     wget
     wireplumber
     wmctrl
+    xarchiver
     xclip
     xdg-desktop-portal-gtk
     xdg-utils

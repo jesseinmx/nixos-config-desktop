@@ -50,6 +50,7 @@
   # Fonts
   fonts.packages = with pkgs; [
     nerd-fonts.hack
+    orbitron
   ];
 
   # Locale & time

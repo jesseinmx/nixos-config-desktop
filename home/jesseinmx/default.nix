@@ -16,13 +16,20 @@ in
     ./neovim.nix
     ./tmux.nix
     ./vscode.nix
-    ./gnome.nix
+    # ./gnome.nix
     ./xfce.nix
   ];
 
   home.username = "jesseinmx";
   home.homeDirectory = "/home/jesseinmx";
   home.stateVersion = "25.05";
+
+  # add containers policy for gitlab deploy script
+  home.file.".config/containers/policy.json".text = builtins.toJSON {
+    default = [{
+      type = "insecureAcceptAnything";
+    }];
+  };
 
   
 
@@ -51,13 +58,29 @@ in
     VAGRANT_DEFAULT_PROVIDER = "virtualbox";
   };
 
-  # GNOME packages moved to ./gnome-settings.nix
-
   
+  # GTK bookmarks 
 
-  # GNOME dconf settings moved to ./gnome-settings.nix
+  xdg.configFile."gtk-3.0/bookmarks" = {
+    text = ''
+      file://${config.home.homeDirectory}/ Home
+      file://${config.home.homeDirectory}/Downloads Downloads
+      file://${config.home.homeDirectory}/Documents Documents
+      file://${config.home.homeDirectory}/Pictures Pictures
+      file://${config.home.homeDirectory}/Desktop Desktop
+      file://${config.home.homeDirectory}/Videos Videos
+      file://${config.home.homeDirectory}/Videos/obs-raw obs-raw
+      file://${config.home.homeDirectory}/flynn/video Flynn-Video
+      file://${config.home.homeDirectory}/flynn/docs Flynn-Docs
+      file://${config.home.homeDirectory}/flynn/graphics Flynn-Graphics
+      file://${config.home.homeDirectory}/git git
+      file://${config.home.homeDirectory}/gdrive-flynn G-Flynn
+      file://${config.home.homeDirectory}/gdrive-jesseinmx G-JesseInMX
+      file://${config.home.homeDirectory}/gdrive-mcallister G-Mcallister
+    '';
+  };
 
-  # GTK bookmarks moved to ./gnome-settings.nix
+
 
   # --- START: systemd user service for ffplay ---
   systemd.user.services."keep-audio-active" = {

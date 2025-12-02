@@ -61,5 +61,6 @@
     t = "tty-clock -ct";
     tma = "tmux a";
     tmj = "tmux new -s jp \; split-window -v \; split-window -h \; select-pane -t 0 \;";
+    tmb = "tmux new -s bethel \; split-window -v \; split-window -h \; select-pane -t 0 \;";
   };
 }

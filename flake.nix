@@ -16,7 +16,11 @@
   outputs = { self, nixpkgs, home-manager, nix-flatpak, ... }@inputs: # <-- Note the @inputs
   let
     system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
+    pkgs = import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+      overlays = [ (import ./overlays/antigravity-override.nix) ];
+    };
   in {
     # 1. NIXOS CONFIGURATION (SYSTEM-ONLY)
     #    Build with: sudo nixos-rebuild switch --flake .#JessBot

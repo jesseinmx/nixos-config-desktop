@@ -55,6 +55,7 @@ in
       "bluetooth-keepalive" = "keepalive-bluetooth";
       "jwstream-sync" = "rclone sync -P jwstream:/jperry-renders ~/Videos/jwstream/";
       docker-killall = "docker kill $(docker ps -q)";
+      docker-compose = "docker compose ";
       assume = ". assume";
     };
 
