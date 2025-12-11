@@ -33,6 +33,7 @@
     bat
     bitwarden
     bitwarden-cli
+    caffeine-ng
     calibre
     cargo
     chezmoi
