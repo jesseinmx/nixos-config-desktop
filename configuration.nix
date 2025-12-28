@@ -46,7 +46,7 @@
   # Networking
   networking.hostName = "JessBot";
   networking.networkmanager.enable = true;
-  networking.wireless.enable = true;
+  # networking.wireless.enable = true; # Managed by NetworkManager
 
   # Fonts
   fonts.packages = with pkgs; [

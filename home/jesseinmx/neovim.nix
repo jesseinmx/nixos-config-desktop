@@ -5,6 +5,7 @@
   home.packages = [
     pkgs.gopls
     pkgs.marksman
+    pkgs.markdownlint-cli
   ];
 
   # Enable the neovim program and manage it via home-manager
@@ -12,6 +13,8 @@
     enable = true;
     plugins = [
       pkgs.vimPlugins.nvim-lspconfig
+      (pkgs.vimPlugins.nvim-treesitter.withAllGrammars)
+      pkgs.vimPlugins.none-ls-nvim
     ];
     extraConfig = ''
       " Clipboard
@@ -20,9 +23,9 @@
       " Line numbers
       set number
       set relativenumber
-
-      " LSP Config
-      lua << EOF
+    '';
+    extraLuaConfig = ''
+      -- LSP Config
       local lspconfig = require('lspconfig')
       lspconfig.gopls.setup{}
       lspconfig.marksman.setup{}
@@ -34,7 +37,39 @@
       vim.keymap.set('n', 'K', vim.lsp.buf.hover)
       -- See :help vim.lsp.buf.definition
       vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
-EOF
+
+      -- Treesitter setup
+      require'nvim-treesitter.configs'.setup {
+        highlight = {
+          enable = true,
+        },
+      }
+
+      -- None-ls setup
+      local null_ls = require("null-ls")
+      null_ls.setup({
+        sources = {
+          null_ls.builtins.diagnostics.markdownlint,
+        },
+      })
+
+      -- 1. Enable Virtual Text (Text at end of line)
+      vim.diagnostic.config({
+        virtual_text = true,
+        signs = true,
+      })
+
+      -- 2. specific keymap to show error message (Press 'gl' to show error)
+      vim.keymap.set('n', 'gl', vim.diagnostic.open_float)
+
+      -- 3. (Optional) Auto-show error window when cursor stops moving
+      vim.o.updatetime = 250 -- faster update time
+      vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+        group = vim.api.nvim_create_augroup("float_diagnostic", { clear = true }),
+        callback = function ()
+          vim.diagnostic.open_float(nil, {focus=false})
+        end
+      })
     '';
   };
 

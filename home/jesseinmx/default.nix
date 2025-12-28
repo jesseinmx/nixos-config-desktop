@@ -53,8 +53,8 @@ in
     GO111MODULE = "auto";
     VAULT_USER = "jperry2";
     AWS_VAULT_USER = "jperry2";
-    SOPS_AGE_KEY_FILE = "$HOME/.sops/nebula.age";
-    SOPS_AGE_RECIPIENTS = "age104xn5xt46wgg3n27em955qm9wkdwrxafx4crtqgq2fzz6zfn3s7slskqwt";
+    # SOPS_AGE_KEY_FILE = "$HOME/.sops/nebula.age";
+    # SOPS_AGE_RECIPIENTS = "age104xn5xt46wgg3n27em955qm9wkdwrxafx4crtqgq2fzz6zfn3s7slskqwt";
     VAGRANT_DEFAULT_PROVIDER = "virtualbox";
   };
 
@@ -109,7 +109,16 @@ in
 
   programs.ssh = {
     enable = true;
+    addKeysToAgent = "yes";
+    extraConfig = ''
+      IdentityFile ~/.ssh/jesseinmx-dev
+      IdentityFile ~/.ssh/id_bethel
+    '';
     matchBlocks = {
+      "github.com" = {
+        user = "git";
+        identityFile = "~/.ssh/jesseinmx-dev";
+      };
       "10.1.1.*" = {
         extraOptions = {
           StrictHostKeyChecking = "no";

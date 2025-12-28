@@ -157,7 +157,6 @@ in
       }
 
       [ -f ~/.profile.local ] && . ~/.profile.local
-      eval "$(zoxide init bash --cmd cd)"
     '';
   };
 
@@ -172,26 +171,11 @@ in
 
   programs.zoxide = {
     enable = true;
-    enableBashIntegration = false;
+    enableBashIntegration = true;
   };
 
-  programs.ssh = {
+  programs.direnv = {
     enable = true;
-    matchBlocks = {
-      "github.com" = {
-        user = "git";
-        identityFile = "~/.ssh/jesseinmx-dev";
-      };
-      "10.1.1.*" = {
-        extraOptions = {
-          StrictHostKeyChecking = "no";
-        };
-      };
-      "192.168.88.*" = {
-        extraOptions = {
-          StrictHostKeyChecking = "no";
-        };
-      };
-    };
+    nix-direnv.enable = true;
   };
 }

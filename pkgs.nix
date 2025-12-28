@@ -25,6 +25,7 @@
     age
     aider-chat-with-browser
     alacritty
+    ansible
     appimage-run
     audacity
     inputs.antigravity-nix.packages.${pkgs.system}.default
@@ -44,6 +45,7 @@
     curl
     deluge
     dig
+    direnv
     docker
     duplicacy
     easyeffects
@@ -73,6 +75,7 @@
     i3status
     inkscape
     jq
+    just
     k9s
     kdePackages.kdenlive
     kitty
@@ -130,6 +133,7 @@
     shotcut
     signal-desktop
     sops
+    terraform
     texliveBasic
     tmux
     tree
